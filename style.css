@@ -1,0 +1,267 @@
+*{
+    padding: 0;
+    margin: 0;
+    font-family: sans-serif;
+}
+
+
+.main{
+    height: 150vh;
+    width: 100%;
+    background-image: linear-gradient(rgba(237, 248, 236, 0.635), rgba(237, 248, 236, 0.635)), url(./images/bg6.jfif);
+    background-position: center;
+    background-size: cover;
+    position: absolute;
+}
+
+.form-box{
+    width: 354px;
+    height: 560px;
+    background-color: #fff;
+    position: relative;
+    margin: 6% auto;
+    padding: 3%;
+    overflow: hidden;
+}
+
+h5{
+    color: #777;
+    font-size: 12px;
+    text-align: center;
+}
+
+.btn-box{
+    width: 220px;
+    margin: 25px auto;
+    position: relative;
+    box-shadow: 0 0 20px 5px rgb(237, 241, 237);
+    border-radius: 30px;
+}
+
+
+
+.toggle-btn{
+    padding: 10px 30px;
+    cursor: pointer;
+    background: transparent;
+    position: relative;
+    border: 0;
+    outline: none;
+}
+
+.toggle-btn:hover{
+    color: rgb(28, 28, 234);
+
+}
+
+#btn{
+    top: 0;
+    left: 0;
+    position: absolute;
+    width: 110px;
+    height: 100%;
+    background-color: aquamarine;
+    border-radius: 30px;
+    transition: .5s;
+}
+
+.icons{
+    margin: 30px auto;
+    text-align: center;
+}
+
+.icons img{
+    width: 25px;
+    margin: 0 12px;
+    cursor: pointer;
+    
+}
+
+.input-grp{
+    top: 10px;
+    position: relative;
+    width: 280px;
+    transition: .5s;
+    display: inline-block;
+}
+
+.input-grp span{
+    top: 43.5%;
+    color: #777;
+    font-size: 12px;
+    position: absolute;
+}
+
+.span span{
+    top: 77%;
+    color: #777;
+    font-size: 12px;
+    position: absolute;
+}
+
+
+.input-field{
+    width: 100%;
+    padding: 10px 0;
+    margin: 5px 0;
+    border-left: 0;
+    border-top: 0;
+    border-right: 0;
+    border-bottom: 1px solid  #999;
+    outline: none;
+    background: transparent;
+    display: inline-block;
+}
+
+.submit-btn{
+    width: 85%;
+    padding: 10px 30px;
+    cursor: pointer;
+    display: block;
+    margin: auto;
+    background-color: aquamarine;
+    border: 0;
+    outline: none;
+    border-radius: 30px;
+}
+
+.submit-btn:hover{
+    color: rgb(28, 28, 234);
+}
+
+.check-box{
+    margin: 30px 10px 30px 0px;
+
+}
+
+
+.forget-btn{
+    position: absolute;
+    margin: 30px 10px 30px 149px;
+    font-size: 12px;
+    border: 0;
+    outline: none;
+    cursor: pointer;
+    background-color: #fff;
+    color: rgb(28, 28, 234);;
+
+}
+
+.forget-btn:hover{
+    color: black;
+}
+
+
+h6{
+    color: #777;
+    font-size: 12px;
+    text-align: left;
+    margin-top: 10px;
+    display: inline-flex;
+}
+
+.reg-btn{
+    position: absolute;
+    font-size: 12px;
+    margin-top: 10px;
+    margin-left: 4px;
+    border: 0;
+    outline: none;
+    cursor: pointer;
+    background-color: #fff;
+    color: rgb(28, 28, 234);;
+}
+
+.reg-btn:hover{
+    color: black;
+}
+
+#login{
+    left: 20px;
+   
+}
+
+#register{
+    left: 450px;
+    top: -50%;
+}
+
+@media(max-width:700px){
+    #register{
+       top: -60%;
+    }
+}
+
+/* JavaScript */
+
+.input1 span{
+    position: absolute;
+    color: red;
+    top: 2%;  
+}
+
+.input2 span{
+    position: absolute;
+    color: red;
+    top: 20%;  
+}
+.input3 span{
+    position: absolute;
+    color: red;
+    top: 80%;  
+}
+
+.input4 span{
+    position: absolute;
+    color: red;
+    top: 2%;  
+}
+.input5 span{
+    position: absolute;
+    color: red;
+    top: 15%;  
+}
+.input6 span{
+    position: absolute;
+    color: red;
+    top: 29%;  
+}
+.input7 span{
+    position: absolute;
+    color: red;
+    top: 43%;  
+}
+.input8 span{
+    position: absolute;
+    color: red;
+    top: 57%;  
+}
+
+.input9 span{
+    position: absolute;
+    color: red;
+    top: 105%;  
+}
+
+
+.input1 span i{
+    color: seagreen;
+}
+.input2 span i{
+    color: seagreen;
+}
+.input4 span i{
+    color: seagreen;
+}
+.input5 span i{
+    color: seagreen;
+}
+.input6 span i{
+    color: seagreen;
+}
+.input7 span i{
+    color: seagreen;
+}
+.input8 span i{
+    color: seagreen;
+}

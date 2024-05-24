@@ -1,0 +1,104 @@
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>
+            Login-Register Page
+        </title>
+        <link rel="stylesheet" href="style.css" >
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">					
+
+    </head>
+    <body>
+        <div class="main">
+            <div class="form-box">
+                <div class="btn-box">
+                    <div id="btn"></div>
+                    <button type="button" class="toggle-btn" onclick="login()">Log In</button>
+                    <button type="button" class="toggle-btn" onclick="register()">Register</button>
+                </div>
+
+                <h5>Sign in with:</h5>
+
+                <div class="icons">
+                    <img src="./images/fb.jfif">
+                    <img src="./images/mai.jfif">
+                    <img src="./images/twitter.jfif">
+                    <img src="./images/git.jfif">
+                </div>
+
+                <h5>(or)</h5>
+
+                <br/>
+
+                <form id="login" class="input-grp">
+                    <div class="input1">
+                        <input type="text" class="input-field " placeholder="Email or Username" id="input"  onkeyup="validateNameOrEmail()" required>
+                        <span id="name-email-error"></span>
+                    </div>
+                    <div class="input2">
+                        <input type="password" class="input-field" placeholder="Enter Password" id="login-password" onkeyup="validateLoginPassword()"required>
+                        <span id="loginPwd-error"></span>
+                    </div>
+                    <input type="checkbox" class="check-box " > <span> Remember Password</span>
+                    <button class="forget-btn">Forgot Password?</button> 
+                    <div class="input3">
+                        <button type="submit" class="submit-btn" onclick="loginForm()">Log In</button> 
+                        <span id="loginSubmit-error"></span>
+                    </div>
+                    <br/> <br/> <br/> 
+                    <h6 class="btn-h6">Not a member? </h6> <button class="reg-btn" onclick="register()">Register</button>
+                </form>
+
+
+                <form id="register" class="input-grp span">
+                    <div class="input4">
+                        <input type="text" class="input-field" placeholder="Username" id="contact-name" onkeyup="validateName()" required>
+                        <span id="name-error"></span>
+                    </div>
+                    <div class="input5">
+                        <input type="email" class="input-field" placeholder="Email" id="contact-email" onkeyup="validateEmail()" required>
+                        <span id="email-error"></span>
+                    </div>
+                    <div class="input6">
+                        <input type="phone number" class="input-field" placeholder="Phone Number" id="contact-phone" onkeyup="validatePhone()" required>
+                        <span id="phone-error"></span>
+                    </div>
+                    <div class="input7">
+                        <input type="password" class="input-field" placeholder="Enter Password" id="contact-password" onkeyup="validatePassword()" required>
+                        <span id="pwd-error"></span>
+                    </div>
+                    <div class="input8">
+                        <input type="password" class="input-field" placeholder="Repeat Password" id="contact-reenter_password" onkeyup="validateReenterPassword()" required>
+                        <span id="re-pwd-error"></span>
+                    </div>
+                    <input type="checkbox" class="check-box" id="checkbox-term" required> <span id="checkbox-error"> I agree to the terms & conditions</span>
+                    <div class="input9">
+                        <button type="submit" class="submit-btn" onclick="registerForm()">Register</button>
+                        <span id="submit-error"></span>
+                    </div>
+                    
+                </form>
+                
+
+            </div>
+        </div>
+        <script>
+            var x = document.getElementById("login")
+            var y = document.getElementById("register")
+            var z = document.getElementById("btn")
+
+            function register(){
+                x.style.left="-410px";
+                y.style.left="30px";
+                z.style.left= "110px";
+            }
+
+            function login(){
+                x.style.left="40px";
+                y.style.left="450px";
+                z.style.left= "0";
+            }
+        </script>
+        <script src="script.js"></script>
+    </body>
+</html>

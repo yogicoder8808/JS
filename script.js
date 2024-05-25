@@ -89,8 +89,16 @@ function validateReenterPassword(){
 
 
 
-function registerForm(){
-    const checkbox = document.getElementById("checkbox-term")
+function registerForm(event){
+
+    event.preventDefault();
+
+    const checkbox = document.getElementById("checkbox-term");
+    const name = document.getElementById("contact-name").value;
+    const email = document.getElementById("contact-email").value;
+    const phone = document.getElementById("contact-phone").value;
+    password=document.getElementById("contact-password").value;
+
     if(!validateName() || !validateEmail() || !validatePhone() || !validatePassword() || !validateReenterPassword() ){
         submitError.style.display='block';
         submitError.innerHTML='Please fix error to submit';
@@ -98,19 +106,49 @@ function registerForm(){
             submitError.style.display='none';
         },3000)
         return false;
-    }else if (!checkbox.checked){
+    } else if (!checkbox.checked){
         submitError.style.display='block';
         submitError.innerHTML='Please agree';
         setTimeout(()=>{
             submitError.style.display='none';
         },3000)
         return false;
-    }else{
+    } else {
+        // Get existing user data or initialize an empty array
+        const storedData = JSON.parse(localStorage.getItem('registeredUsers')) || [];
+        
+        // Check for duplicate entry
+        const isDuplicate = storedData.some(user => {
+            return user.username === name || user.email === email || user.phone === phone;
+        });
+
+        if (isDuplicate) {
+            window.alert("Duplicate entry: A user with the same name, email, or phone already exists.");
+            return false;
+        }
+
+        const userData = {
+            username: name,
+            email: email,
+            phone: phone,
+            password: password 
+        };
+        
+        // Add the new user data to the array
+        storedData.push(userData);
+        
+        // Save the updated array back to local storage
+        localStorage.setItem('registeredUsers', JSON.stringify(storedData));
+
         window.alert("User Registered Successfully");
+        window.location.href = "form.html"; 
+        // Display the updated user data in the table
+        displayStoredData();
+        
         return true;
     }
-    
 }
+
 
 
 // Login form
@@ -153,8 +191,20 @@ function validateLoginPassword(){
     return true;
 }
 
+// Updated loginForm function to authenticate user
 
-function loginForm(){
+function loginForm(event){
+
+    event.preventDefault();
+
+    const input = document.getElementById("input").value;
+    const inputPassword = document.getElementById("login-password").value;
+    const storedData = JSON.parse(localStorage.getItem('registeredUsers')) || [];
+
+    const user = storedData.find(user => {
+        return (user.username === input || user.email === input) && user.password === inputPassword;
+    });
+
     if(!validateNameOrEmail() || !validateLoginPassword() ){
         loginSubmitError.style.display='block';
         loginSubmitError.innerHTML='Please fix error to login';
@@ -162,9 +212,28 @@ function loginForm(){
             loginSubmitError.style.display='none';
         },3000)
         return false;
+    }else if (!user) {
+        window.alert("Invalid username/email or password");
+        return false;
     }else{
+        
         window.alert("User loged in Successfully");
+        window.location.href = "userData.html"; // Navigate to userData.html
         return true;
     }
     
 }
+
+// Toggle password
+
+
+function togglePassword(id) {
+    var passwordField = document.getElementById(id);
+    if (passwordField.type === "password") {
+        passwordField.type = "text";
+    } else {
+        passwordField.type = "password";
+    }
+}
+
+

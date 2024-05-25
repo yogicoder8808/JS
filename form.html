@@ -30,13 +30,17 @@
 
                 <br/>
 
-                <form id="login" class="input-grp">
+                <form id="login" class="input-grp"  onsubmit="return loginForm(event)">
                     <div class="input1">
                         <input type="text" class="input-field " placeholder="Email or Username" id="input"  onkeyup="validateNameOrEmail()" required>
                         <span id="name-email-error"></span>
                     </div>
                     <div class="input2">
                         <input type="password" class="input-field" placeholder="Enter Password" id="login-password" onkeyup="validateLoginPassword()"required>
+                        <span class="show-password">
+                            <input type="checkbox" onclick="togglePassword('login-password')"> 
+                        </span>
+                        
                         <span id="loginPwd-error"></span>
                     </div>
                     <input type="checkbox" class="check-box " > <span> Remember Password</span>
@@ -50,7 +54,7 @@
                 </form>
 
 
-                <form id="register" class="input-grp span">
+                <form id="register" class="input-grp span" onsubmit="return registerForm(event)">
                     <div class="input4">
                         <input type="text" class="input-field" placeholder="Username" id="contact-name" onkeyup="validateName()" required>
                         <span id="name-error"></span>
@@ -65,10 +69,17 @@
                     </div>
                     <div class="input7">
                         <input type="password" class="input-field" placeholder="Enter Password" id="contact-password" onkeyup="validatePassword()" required>
+                        <span class="show-password" >
+                            <input type="checkbox" onclick="togglePassword('contact-password')"> 
+                        </span>
                         <span id="pwd-error"></span>
                     </div>
                     <div class="input8">
                         <input type="password" class="input-field" placeholder="Repeat Password" id="contact-reenter_password" onkeyup="validateReenterPassword()" required>
+                        <span class="show-password">
+                            <input type="checkbox" onclick="togglePassword('contact-reenter_password')"> 
+                        </span>
+                        
                         <span id="re-pwd-error"></span>
                     </div>
                     <input type="checkbox" class="check-box" id="checkbox-term" required> <span id="checkbox-error"> I agree to the terms & conditions</span>
@@ -78,7 +89,6 @@
                     </div>
                     
                 </form>
-                
 
             </div>
         </div>

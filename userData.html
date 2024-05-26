@@ -7,7 +7,7 @@
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<h1>Stored User Data</h1>
+<h1><u>STORED USER DATA</u></h1>
 <table>
     <thead>
         <tr>
@@ -15,6 +15,7 @@
             <th>Email</th>
             <th>Phone</th>
             <th>Password</th>
+            <th>Actions</th>
         </tr>
     </thead>
     <tbody id="userData">
@@ -23,31 +24,6 @@
 </table>
 
 <script src="script.js"></script>
-<script>
-// Function to display stored user data in table format
-function displayStoredData() {
-    // localStorage.removeItem('registeredUsers');
-    const storedData = JSON.parse(localStorage.getItem('registeredUsers')) || [];
-    const userDataElement = document.getElementById('userData');
-    
-    // Clear existing table data
-    userDataElement.innerHTML = '';
-    
-    // Add each stored user data row to the table
-    storedData.forEach(user => {
-        const row = document.createElement('tr');
-        row.innerHTML = `
-            <td>${user.username}</td>
-            <td>${user.email}</td>
-            <td>${user.phone}</td>
-            <td>${user.password}</td>
-        `;
-        userDataElement.appendChild(row);
-    });
-}
 
-// Call the function to display stored user data when the page loads
-displayStoredData();
-</script>
 </body>
 </html>

@@ -1,3 +1,22 @@
+// Form and Register position
+
+var x = document.getElementById("login")
+var y = document.getElementById("register")
+var z = document.getElementById("btn")
+
+function register(){
+    x.style.left="-410px";
+    y.style.left="30px";
+    z.style.left= "110px";
+}
+function login(){
+    x.style.left="40px";
+    y.style.left="450px";
+    z.style.left= "0";
+}
+
+// Form and register form JS
+
 var name_emailError = document.getElementById("name-email-error");
 var loginPwdError = document.getElementById("loginPwd-error");
 var loginSubmitError = document.getElementById("loginSubmit-error");
@@ -114,19 +133,14 @@ function registerForm(event){
         },3000)
         return false;
     } else {
-        // Get existing user data or initialize an empty array
         const storedData = JSON.parse(localStorage.getItem('registeredUsers')) || [];
-        
-        // Check for duplicate entry
         const isDuplicate = storedData.some(user => {
             return user.username === name || user.email === email || user.phone === phone;
         });
-
         if (isDuplicate) {
             window.alert("Duplicate entry: A user with the same name, email, or phone already exists.");
             return false;
         }
-
         const userData = {
             username: name,
             email: email,
@@ -136,15 +150,10 @@ function registerForm(event){
         
         // Add the new user data to the array
         storedData.push(userData);
-        
-        // Save the updated array back to local storage
         localStorage.setItem('registeredUsers', JSON.stringify(storedData));
-
         window.alert("User Registered Successfully");
         window.location.href = "form.html"; 
-        // Display the updated user data in the table
         displayStoredData();
-        
         return true;
     }
 }
@@ -155,8 +164,6 @@ function registerForm(event){
 
 function validateNameOrEmail() {
     var input = document.getElementById("input").value;
-   
-
     var nameRegex = /^[A-Za-z]{1,12}\s{1}[A-Za-z]{1,12}$/;
     var emailRegex = /^[A-Za-z\._\-[0-9]*[@][A-Za-z]*[\.][a-z]{2,3}$/;
 
@@ -218,7 +225,7 @@ function loginForm(event){
     }else{
         
         window.alert("User loged in Successfully");
-        window.location.href = "userData.html"; // Navigate to userData.html
+        window.location.href = "userData.html"; 
         return true;
     }
     
@@ -234,6 +241,148 @@ function togglePassword(id) {
     } else {
         passwordField.type = "password";
     }
+}
+
+// CRUD Operation
+
+// Function to display stored user data in table format
+function displayStoredData() {
+    const storedData = JSON.parse(localStorage.getItem('registeredUsers')) || [];
+    const userDataElement = document.getElementById('userData');
+    
+    userDataElement.innerHTML = '';
+
+    const emptyRow = document.createElement('tr');
+    emptyRow.innerHTML = `
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    `;
+    userDataElement.appendChild(emptyRow);
+    
+    storedData.forEach((user,index) => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+            <td>${user.username}</td>
+            <td>${user.email}</td>
+            <td>${user.phone}</td>
+            <td>${user.password}</td>
+            <td>
+                <button class="edit-btn" onclick="editRow(${index})" >Edit</button>
+                <button class="delete-btn"onclick="deleteRow(${index})">Delete</button>
+            </td>
+        `;
+        userDataElement.appendChild(row);
+    });
+}
+
+
+displayStoredData();
+
+
+function validateName(name) {
+    const regex = /^[A-Za-z]{1,12}\s{1}[A-Za-z]{1,12}$/;
+    return regex.test(name);
+}
+
+function validateEmail(email) {
+    const regex = /^[A-Za-z\._\-[0-9]*[@][A-Za-z]*[\.][a-z]{2,3}$/;
+    return regex.test(email);
+}
+
+function validatePhone(phone) {
+    const regex = /^[0-9]{10}$/;
+    return regex.test(phone);
+}
+
+function validatePassword(password) {
+    const regex = /^(?=.*[A-z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*-?&])[A-Za-z\d@$!%*-?&]{8,}$/;
+    return regex.test(password);
+}
+
+
+// Function to edit user data
+function editRow(index) {
+    const userDataElement = document.getElementById('userData');
+    const storedData = JSON.parse(localStorage.getItem('registeredUsers')) || [];
+    const user = storedData[index];
+    
+    // Create an edit form
+    const editForm = document.createElement('form');
+    editForm.innerHTML = `
+        <input type="text" id="edit-name" value="${user.username}" placeholder="Username" required><br>
+        <input type="email" id="edit-email" value="${user.email}" placeholder="Email" required><br>
+        <input type="tel" id="edit-phone" value="${user.phone}" placeholder="Phone Number" required><br>
+        <input type="password" id="edit-password" value="${user.password}" placeholder="Password" required><br>
+        <button onclick="saveRow(${index})">Save</button>
+        <button onclick="cancelEdit(${index})">Cancel</button>
+    `;
+    
+    // Replace the row with the edit form
+    const row = userDataElement.rows[index + 1]; 
+    if (row) {
+        row.innerHTML = '';
+        const cell = row.insertCell(0);
+        cell.colSpan = 5;
+        cell.appendChild(editForm);
+    } else {
+        console.error('Row not found for index:', index);
+    }
+}
+
+
+
+
+// Function to save edited user data
+function saveRow(index) {
+    const storedData = JSON.parse(localStorage.getItem('registeredUsers')) || [];
+    const editForm = document.getElementById('userData').rows[index + 1].cells[0].getElementsByTagName('form')[0];
+    const editedUser = {
+        username: editForm.querySelector('#edit-name').value,
+        email: editForm.querySelector('#edit-email').value,
+        phone: editForm.querySelector('#edit-phone').value,
+        password: editForm.querySelector('#edit-password').value
+    };
+ 
+      if (!validateName(editedUser.username)) {
+        alert('Invalid username! Please enter a valid username.');
+        return;
+    }
+
+    if (!validateEmail(editedUser.email)) {
+        alert('Invalid email! Please enter a valid email address.');
+        return;
+    }
+
+    if (!validatePhone(editedUser.phone)) {
+        alert('Invalid phone number! Please enter a valid phone number.');
+        return;
+    }
+
+    if (!validatePassword(editedUser.password)) {
+        alert('Invalid password! Please enter a valid password.');
+        return;
+    }
+
+    storedData[index] = editedUser;
+    localStorage.setItem('registeredUsers', JSON.stringify(storedData));
+    displayStoredData();
+}
+
+// Function to cancel editing
+function cancelEdit(index) {
+    displayStoredData();
+}
+
+
+// Function to delete user data
+function deleteRow(index) {
+    const storedData = JSON.parse(localStorage.getItem('registeredUsers')) || [];
+    storedData.splice(index, 1);
+    localStorage.setItem('registeredUsers', JSON.stringify(storedData));
+    displayStoredData(); 
 }
 
 

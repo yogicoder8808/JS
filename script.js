@@ -244,3 +244,128 @@ function togglePassword(id) {
 }
 
 // CRUD Operation
+
+// Function to display stored user data in table format
+function displayStoredData() {
+    const storedData = JSON.parse(localStorage.getItem('registeredUsers')) || [];
+    const userDataElement = document.getElementById('userData');
+    
+    userDataElement.innerHTML = '';
+    
+    storedData.forEach((user,index) => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+            <td>${user.username}</td>
+            <td>${user.email}</td>
+            <td>${user.phone}</td>
+            <td>${user.password}</td>
+            <td>
+                <button class="edit-btn" onclick="editRow(${index})" >Edit</button>
+                <button class="delete-btn"onclick="deleteRow(${index})">Delete</button>
+            </td>
+        `;
+        userDataElement.appendChild(row);
+    });
+}
+displayStoredData();
+
+function validateEditName(name) {
+    const regex = /^[A-Za-z]{1,12}\s{1}[A-Za-z]{1,12}$/;
+    return regex.test(name);
+}
+function validateEditEmail(email) {
+    const regex = /^[A-Za-z\._\-[0-9]*[@][A-Za-z]*[\.][a-z]{2,3}$/;
+    return regex.test(email);
+}
+
+function validateEditPhone(phone) {
+    const regex = /^[0-9]{10}$/;
+    return regex.test(phone);
+}
+
+function validateEditPassword(password) {
+    const regex = /^(?=.*[A-z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*-?&])[A-Za-z\d@$!%*-?&]{8,}$/;
+    return regex.test(password);
+}
+
+// Function to save edited user data
+
+function editRow(index) {
+    const userDataElement = document.getElementById('userData');
+    const storedData = JSON.parse(localStorage.getItem('registeredUsers')) || [];
+    const user = storedData[index];
+    
+    // Create an edit form
+    const editForm = document.createElement('form');
+    editForm.innerHTML = `
+        <input type="text" id="edit-name" value="${user.username}" placeholder="Username" required><br>
+        <input type="email" id="edit-email" value="${user.email}" placeholder="Email" required><br>
+        <input type="tel" id="edit-phone" value="${user.phone}" placeholder="Phone Number" required><br>
+        <input type="password" id="edit-password" value="${user.password}" placeholder="Password" required>
+        <span class="show-password editToggle">
+            <input type="checkbox" onclick="togglePassword('edit-password')"> 
+        </span><br>
+        <button onclick="saveRow(${index})">Save</button>
+        <button onclick="cancelEdit(${index})">Cancel</button>
+    `;
+    
+    // Replace the row with the edit form
+    const row = userDataElement.rows[index + 0]; 
+    if (row) {
+        row.innerHTML = '';
+        const cell = row.insertCell(0);
+        cell.colSpan = 5;
+        cell.appendChild(editForm);
+    } else {
+        console.error('Row not found for index:', index);
+    }
+}
+
+function saveRow(index) {
+    const storedData = JSON.parse(localStorage.getItem('registeredUsers')) || [];
+    const editForm = document.getElementById('userData').rows[index + 0].cells[0].getElementsByTagName('form')[0];
+    const editedUser = {
+        username: editForm.querySelector('#edit-name').value,
+        email: editForm.querySelector('#edit-email').value,
+        phone: editForm.querySelector('#edit-phone').value,
+        password: editForm.querySelector('#edit-password').value
+    };
+ 
+      if (!validateEditName(editedUser.username)) {
+        alert('Invalid username! Please enter a valid username.');
+        return;
+    }
+
+    if (!validateEditEmail(editedUser.email)) {
+        alert('Invalid email! Please enter a valid email address.');
+        return;
+    }
+
+    if (!validateEditPhone(editedUser.phone)) {
+        alert('Invalid phone number! Please enter a valid phone number.');
+        return;
+    }
+
+    if (!validateEditPassword(editedUser.password)) {
+        alert('Invalid password! Please enter a valid password.');
+        return;
+    }
+
+    storedData[index] = editedUser;
+    localStorage.setItem('registeredUsers', JSON.stringify(storedData));
+    displayStoredData();
+}
+
+// Function to cancel editing
+function cancelEdit(index) {
+    displayStoredData();
+}
+
+
+// Function to delete user data
+function deleteRow(index) {
+    const storedData = JSON.parse(localStorage.getItem('registeredUsers')) || [];
+    storedData.splice(index, 1);
+    localStorage.setItem('registeredUsers', JSON.stringify(storedData));
+    displayStoredData(); 
+}

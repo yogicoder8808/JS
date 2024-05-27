@@ -305,7 +305,7 @@ function editRow(index) {
         <span class="show-password editToggle">
             <input type="checkbox" onclick="togglePassword('edit-password')"> 
         </span><br>
-        <button onclick="saveRow(${index})">Save</button>
+        <button onclick="saveRow(${index})">Save </button>
         <button onclick="cancelEdit(${index})">Cancel</button>
     `;
     
@@ -316,9 +316,11 @@ function editRow(index) {
         const cell = row.insertCell(0);
         cell.colSpan = 5;
         cell.appendChild(editForm);
+        
     } else {
         console.error('Row not found for index:', index);
     }
+
 }
 
 function saveRow(index) {
@@ -353,6 +355,7 @@ function saveRow(index) {
 
     storedData[index] = editedUser;
     localStorage.setItem('registeredUsers', JSON.stringify(storedData));
+    window.alert("User data edited & saved successfully!");
     displayStoredData();
 }
 
@@ -367,5 +370,6 @@ function deleteRow(index) {
     const storedData = JSON.parse(localStorage.getItem('registeredUsers')) || [];
     storedData.splice(index, 1);
     localStorage.setItem('registeredUsers', JSON.stringify(storedData));
+    window.alert("User data deleted successfully!");
     displayStoredData(); 
 }

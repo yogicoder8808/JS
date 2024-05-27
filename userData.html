@@ -7,7 +7,7 @@
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<h1><u>STORED USER DATA</u></h1>
+<h1>STORED USER DATA</h1>
 <table>
     <thead>
         <tr>
@@ -25,22 +25,13 @@
 
 <script src="script.js"></script>
 <script>
-    // Function to display stored user data in table format
- function displayStoredData() {
+       
+  // Function to display stored user data in table format
+  function displayStoredData() {
     const storedData = JSON.parse(localStorage.getItem('registeredUsers')) || [];
     const userDataElement = document.getElementById('userData');
     
     userDataElement.innerHTML = '';
-
-    const emptyRow = document.createElement('tr');
-    emptyRow.innerHTML = `
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-    `;
-    userDataElement.appendChild(emptyRow);
     
     storedData.forEach((user,index) => {
         const row = document.createElement('tr');
@@ -57,7 +48,6 @@
         userDataElement.appendChild(row);
     });
 }
-
 
 displayStoredData();
 
@@ -95,13 +85,16 @@ function editRow(index) {
         <input type="text" id="edit-name" value="${user.username}" placeholder="Username" required><br>
         <input type="email" id="edit-email" value="${user.email}" placeholder="Email" required><br>
         <input type="tel" id="edit-phone" value="${user.phone}" placeholder="Phone Number" required><br>
-        <input type="password" id="edit-password" value="${user.password}" placeholder="Password" required><br>
+        <input type="password" id="edit-password" value="${user.password}" placeholder="Password" required>
+        <span class="show-password editToggle">
+            <input type="checkbox" onclick="togglePassword('edit-password')"> 
+        </span><br>
         <button onclick="saveRow(${index})">Save</button>
         <button onclick="cancelEdit(${index})">Cancel</button>
     `;
     
     // Replace the row with the edit form
-    const row = userDataElement.rows[index + 1]; 
+    const row = userDataElement.rows[index + 0]; 
     if (row) {
         row.innerHTML = '';
         const cell = row.insertCell(0);
@@ -118,7 +111,7 @@ function editRow(index) {
 // Function to save edited user data
 function saveRow(index) {
     const storedData = JSON.parse(localStorage.getItem('registeredUsers')) || [];
-    const editForm = document.getElementById('userData').rows[index + 1].cells[0].getElementsByTagName('form')[0];
+    const editForm = document.getElementById('userData').rows[index + 0].cells[0].getElementsByTagName('form')[0];
     const editedUser = {
         username: editForm.querySelector('#edit-name').value,
         email: editForm.querySelector('#edit-email').value,
@@ -165,6 +158,5 @@ function deleteRow(index) {
     displayStoredData(); 
 }
 </script>
-
 </body>
 </html>

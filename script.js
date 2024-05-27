@@ -1,5 +1,5 @@
 
-    // Form and Register position
+// Form and Register position
 
 var x = document.getElementById("login")
 var y = document.getElementById("register")
@@ -26,10 +26,9 @@ var nameError = document.getElementById("name-error");
 var emailError = document.getElementById("email-error");
 var phoneError = document.getElementById("phone-error");
 var passwordError = document.getElementById("pwd-error");
-var rePasswordError = document.getElementById("rePasswodd-error");
+var rePasswordError = document.getElementById("rePassword-error");
 var submitError = document.getElementById("submit-error");
 var checkboxError = document.getElementById("checkbox-error");
-
 
 function validateName(){
     var name=document.getElementById("contact-name").value;
@@ -82,11 +81,11 @@ var password;
 function validatePassword(){
     password=document.getElementById("contact-password").value;
     if(password.length==0){
-        passwordError.innerHTML ='Password must be strong and minimum 8 characters';
+        passwordError.innerHTML ='Enter Password';
         return false;
     }
     if(!password.match(/^(?=.*[A-z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*-?&])[A-Za-z\d@$!%*-?&]{8,}$/)){
-        passwordError.innerHTML ='Invalid Password';
+        passwordError.innerHTML ='Password must be strong and minimum 8 characters';
         return false;
     }
     passwordError.innerHTML = '<i class="fa fa-check-circle"></i>';
@@ -96,11 +95,11 @@ function validatePassword(){
 function validateReenterPassword(){
     var reenter_password=document.getElementById("contact-reenter_password").value;
     if(reenter_password.length==0){
-        rePasswordError.innerHTML ='Enter Password';
+        rePasswordError.innerHTML ='Re-Enter Password';
         return false;
     }
     if(reenter_password != password){
-        rePasswordError.innerHTML ='Password must be same as password';
+        rePasswordError.innerHTML ='Password not matching';
         return false;
     }
     rePasswordError.innerHTML = '<i class="fa fa-check-circle"></i>';
@@ -188,11 +187,11 @@ function validateNameOrEmail() {
 function validateLoginPassword(){
     var inputPassword=document.getElementById("login-password").value;
     if(inputPassword.length==0){
-        loginPwdError.innerHTML ='Password must be strong and minimum 8 characters';
+        loginPwdError.innerHTML ='Enter Password';
         return false;
     }
     if(!inputPassword.match(/^(?=.*[A-z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*-?&])[A-Za-z\d@$!%*-?&]{8,}$/)){
-        loginPwdError.innerHTML ='Invalid Password';
+        loginPwdError.innerHTML ='Invalid password';
         return false;
     }
     loginPwdError.innerHTML = '<i class="fa fa-check-circle"></i>';
@@ -245,5 +244,3 @@ function togglePassword(id) {
 }
 
 // CRUD Operation
-   
- 

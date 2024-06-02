@@ -10,24 +10,29 @@
     <h1>ADD USER</h1>
     <form id="addUserForm" onsubmit="addUser(event)">
         <label for="contact-name">Name:</label>
-        <input type="text" id="contact-name" name="contact-name">
+        <input type="text" id="contact-name" name="contact-name" placeholder="Enter Full Name">
         <div id="name-error"></div>
 
         <label for="contact-email">Email:</label>
-        <input type="email" id="contact-email" name="contact-email">
+        <input type="email" id="contact-email" name="contact-email" placeholder="Enter Email ID">
         <div id="email-error"></div>
 
         <label for="contact-phone">Phone:</label>
-        <input type="tel" id="contact-phone" name="contact-phone">
+        <input type="tel" id="contact-phone" name="contact-phone" placeholder="Enter Phone Number">
         <div id="phone-error"></div>
 
         <label for="contact-password">Password:</label>
-        <input type="password" id="contact-password" name="contact-password">
+        <input type="password" id="contact-password" name="contact-password" placeholder="Enter Password">
+        <span class="show-password" >
+            <input type="checkbox" onclick="togglePassword('contact-password')"> 
+        </span>
         <div id="pwd-error"></div>
 
         <button type="submit">Add User</button>
     </form>
     <button onclick="goBack()">Go Back</button>
-    <script src="script.js"></script>
+    <script src="common.js"></script>
+    <script src="userData.js"></script>  
+    <script src="register.js"></script>
 </body>
 </html>

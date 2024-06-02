@@ -24,12 +24,17 @@
 
         <label for="edit-password">Password:</label>
         <input type="password" id="edit-password" name="edit-password">
+        <span class="show-password" >
+            <input type="checkbox" onclick="togglePassword('edit-password')"> 
+        </span>
         <div id="password-error"></div>
 
         <button type="submit">Save</button>
         <button type="button" onclick="cancelEdit()">Cancel</button>
     </form>
-    <script src="script.js"></script>
+    <script src="common.js"></script>
+    <script src="userData.js"></script>
+    
 </body>
 </html>
 

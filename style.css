@@ -194,82 +194,66 @@ h6{
 
 /* JavaScript */
 
-.input1 span{
+.input-one span{
     position: absolute;
     color: red;
-    top: 2%;  
+    top: 3%;  
 }
 
-.input2 span{
+.input-two span{
     position: absolute;
     color: red;
     top: 20%;  
 }
-.input3 span{
+.input-three span{
     position: absolute;
     color: red;
     top: 80%;  
 }
 
-.input4 span{
+.input-four span{
     position: absolute;
     color: red;
     top: 2%;  
 }
-.input5 span{
+.input-five span{
     position: absolute;
     color: red;
     top: 15%;  
 }
-.input6 span{
+.input-six span{
     position: absolute;
     color: red;
     top: 29%;  
 }
-.input7 span{
+.input-seven span,
+.input-eight span{
     position: absolute;
     color: red;
-    top: 43%;  
-}
-.input8 span{
-    position: absolute;
-    color: red;
-    top: 57%;  
+    top: 20%;  
 }
 
-.input9 span{
+.input-nine span{
     position: absolute;
     color: red;
     top: 105%;  
 }
 
 
-.input1 span i{
-    color: seagreen;
-}
-.input2 span i{
-    color: seagreen;
-}
-.input4 span i{
-    color: seagreen;
-}
-.input5 span i{
-    color: seagreen;
-}
-.input6 span i{
-    color: seagreen;
-}
-.input7 span i{
-    color: seagreen;
-}
-.input8 span i{
+.input-one span i,
+.input-two span i,
+.input-four span i,
+.input-five span i,
+.input-six span i,
+.input-seven span i,
+.input-eight span i{
     color: seagreen;
 }
 
 
 /* Password toggle */
 
-.input2, .input7, .input8 {
+.input-two, .input-seven, .input-eight {
     position: relative;  
     align-items: center;
 
@@ -288,7 +272,7 @@ h6{
 }
 
 
-/* --------Table---------- */
+/* --------UserData Table---------- */
 
 table {
     width: 100%;
@@ -317,6 +301,116 @@ th {
 #userData tr:hover {
     background-color: #f5f5f5;
 }
+
+/* AddUser and Logout btn */
+
+.adduser-btn{
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 15px;
+    padding-right: 15px;
+    background-color: white;
+    color: rgb(40, 202, 40);
+    border: 1px solid gray;
+    margin-left: 85%;
+    font-weight: 600;
+}
+
+.logout-btn{
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 15px;
+    padding-right: 15px;
+    background-color: white;
+    color: red;
+    border: 1px solid gray;
+    font-weight: 600;
+}
+
+.adduser-btn:hover{
+    background-color: rgb(40, 202, 40);  
+    color: white;
+}
+
+.logout-btn:hover{
+    background-color: red;  
+    color: white;
+}
+
+/* Edit & Add Form */
+
+#edit-form, #add-form{
+    max-width: 400px;
+    margin: 40px auto;
+
+}
+.contact-input {
+    width: 100%;
+    margin-bottom: 20px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+
+.contact-input:hover {
+    background-color: #f5f5f5;
+}
+.show-edituser-pwd, .show-adduser-pwd{
+    position: absolute;
+    left: 60%;
+    bottom:47%;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    opacity: 0.7;
+}
+
+.save-btn,.add-btn{
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 15px;
+    padding-right: 15px;
+    background-color: #3498db; /* Blue */
+    color: #fff;
+    border: 1px solid #2980b9;
+}
+
+.cancel-btn,.goBack-btn{
+    padding: 5px;
+    background-color: #e74c3c; /* Red */
+    color: #fff;
+    border: 1px solid #c0392b;
+}
+
+.save-btn:hover,.add-btn:hover{
+    background-color:blue;
+}
+    
+.cancel-btn:hover, .goBack-btn:hover{
+    background-color: red;  
+}
+
+.error-msg{
+ color: red;
+ position: absolute;
+ display: inline-block;
+ padding: 10px;
+}
+
+.pwd-error-msg{
+    color: red;
+    display: inline-block;
+    position: absolute;
+    top: 50.5%;
+    right: 26%;
+
+}
+
 
 /* Edit and Delete button */
 
@@ -351,71 +445,3 @@ th {
     cursor: pointer;
 }
 
-
-/* editUser Page: */
-
-
-/* CSS specific to editUser.html */
-.edit-user-form {
-    background-color: #ffffff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    max-width: 400px;
-    width: 100%;
-    margin: 50px auto;
-    font-family: Arial, sans-serif;
-}
-
-.edit-user-form label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
-}
-
-.edit-user-form input[type="text"],
-.edit-user-form input[type="email"],
-.edit-user-form input[type="tel"],
-.edit-user-form input[type="password"] {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #cccccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-    font-size: 14px;
-}
-
-.edit-user-form .show-password {
-    display: flex;
-    align-items: center;
-    margin-bottom: 15px;
-    font-size: 14px;
-}
-
-.edit-user-form input[type="checkbox"] {
-    margin-right: 5px;
-}
-
-.edit-user-form button {
-    background-color: #4CAF50;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 16px;
-    margin-right: 10px;
-}
-
-.edit-user-form button:hover {
-    background-color: #45a049;
-}
-
-.edit-user-form button[type="button"] {
-    background-color: #f44336;
-}
-
-.edit-user-form button[type="button"]:hover {
-    background-color: #e53935;
-}

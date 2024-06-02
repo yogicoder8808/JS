@@ -31,22 +31,22 @@
                 <br/>
 
                 <form id="login" class="input-grp"  onsubmit="return loginForm(event)">
-                    <div class="input1">
+                    <div class="input-one">
                          <input type="email" class="input-field " placeholder="Enter Email" id="login-email" onkeyup="validateLoginEmail()" required>
                         <span id="login-email-error"></span>
                     </div>
-                    <div class="input2">
+                    <div class="input-two">
                         <input type="password" class="input-field" placeholder="Enter Password" id="login-password" onkeyup="validateLoginPassword()" minlength="8" required>
                         <span class="show-password">
                             <input type="checkbox" onclick="togglePassword('login-password')"> 
                         </span>
-                        <span id="loginPwd-error"></span>
+                        <span id="login-pwd-error" class="one"></span>
                     </div>
-                    <input type="checkbox" class="check-box " > <span> Remember Password</span>
+                    <input type="checkbox" class="check-box"> <span> Remember Password</span>
                     <button class="forget-btn">Forgot Password?</button> 
-                    <div class="input3">
+                    <div class="input-three">
                         <button type="submit" class="submit-btn" onclick="loginForm()">Log In</button> 
-                        <span id="loginSubmit-error"></span>
+                        <span id="login-submit-error"></span>
                     </div>
                     <br/> <br/> <br/> 
                     <h6 class="btn-h6">Not a member? </h6> <button class="reg-btn" onclick="register()">Register</button>
@@ -54,35 +54,35 @@
 
 
                 <form id="register" class="input-grp span" onsubmit="return registerForm(event)">
-                    <div class="input4">
+                    <div class="input-four">
                         <input type="text" class="input-field" placeholder="Full Name" id="contact-name" onkeyup="validateName()" required>
                         <span id="name-error"></span>
                     </div>
-                    <div class="input5">
+                    <div class="input-five">
                         <input type="email" class="input-field" placeholder="Email" id="contact-email" onkeyup="validateEmail()" required>
                         <span id="email-error"></span>
                     </div>
-                    <div class="input6">
+                    <div class="input-six">
                         <input type="tel" class="input-field" placeholder="Phone Number" id="contact-phone" onkeyup="validatePhone()" required>
                         <span id="phone-error"></span>
                     </div>
-                    <div class="input7">
+                    <div class="input-seven">
                         <input type="password" class="input-field" placeholder="Enter Password" id="contact-password" onkeyup="validatePassword()" minlength="8" required>
                         <span class="show-password" >
                             <input type="checkbox" onclick="togglePassword('contact-password')"> 
                         </span>
-                        <span id="pwd-error"></span>
+                        <span id="password-error"></span>
                     </div>
-                    <div class="input8">
-                        <input type="password" class="input-field" placeholder="Repeat Password" id="contact-reenter-password" onkeyup="validateReenterPassword()" minlength="8" required>
+                    <div class="input-eight">
+                        <input type="password" class="input-field" placeholder="Repeat Password" id="contact-repeat-password" onkeyup="validateRepeatPassword()" minlength="8" required>
                         <span class="show-password">
-                            <input type="checkbox" onclick="togglePassword('contact-reenter-password')"> 
+                            <input type="checkbox" onclick="togglePassword('contact-repeat-password')"> 
                         </span>
                         
-                        <span id="rePassword-error"></span>
+                        <span id="repeat-pwd-error"></span>
                     </div>
                     <input type="checkbox" class="check-box" id="checkbox-term" required> <span id="checkbox-error"> I agree to the terms & conditions</span>
-                    <div class="input9">
+                    <div class="input-nine">
                         <button type="submit" class="submit-btn" onclick="registerForm()">Register</button>
                         <span id="submit-error"></span>
                     </div>

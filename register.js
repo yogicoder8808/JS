@@ -1,23 +1,34 @@
 // register.js
 
-var loginPage = document.getElementById("login");
-var registerPage = document.getElementById("register");
-var btn = document.getElementById("btn");
-
 function register() {
     loginPage.style.left = "-410px";
     registerPage.style.left = "30px";
     btn.style.left = "110px";
 }
 
+function validateRepeatPassword() {
+    const password = document.getElementById("contact-password").value;
+    const reEnterPwd = document.getElementById("contact-repeat-password").value;
+    if (reEnterPwd.length == '') {
+        rePasswordError.innerHTML = 'Re-Enter Password';
+        return false;
+    }
+    if (reEnterPwd != password) {
+        rePasswordError.innerHTML = 'P/w not matching';
+        return false;
+    }
+    rePasswordError.innerHTML = '<i class="fa fa-check-circle"></i>';
+    return true;
+}
+
 // Registration form validation
-var nameError = document.getElementById("name-error");
-var emailError = document.getElementById("email-error");
-var phoneError = document.getElementById("phone-error");
-var passwordError = document.getElementById("pwd-error");
-var rePasswordError = document.getElementById("rePassword-error");
-var submitError = document.getElementById("submit-error");
-var checkboxError = document.getElementById("checkbox-error");
+const nameError = document.getElementById("name-error");
+const emailError = document.getElementById("email-error");
+const phoneError = document.getElementById("phone-error");
+const passwordError = document.getElementById("password-error");
+const rePasswordError = document.getElementById("repeat-pwd-error");
+const submitError = document.getElementById("submit-error");
+const checkboxError = document.getElementById("checkbox-error");
 
 function registerForm(event) {
     event.preventDefault();
@@ -26,9 +37,9 @@ function registerForm(event) {
     const name = document.getElementById("contact-name").value;
     const email = document.getElementById("contact-email").value;
     const phone = document.getElementById("contact-phone").value;
-    password = document.getElementById("contact-password").value;
+    const password = document.getElementById("contact-password").value;
 
-    if (!validateName() || !validateEmail() || !validatePhone() || !validatePassword() || !validateReenterPassword()) {
+    if (!validateName() || !validateEmail() || !validatePhone() || !validatePassword() || !validateRepeatPassword()) {
         submitError.style.display = 'block';
         submitError.innerHTML = 'Please fix error to submit';
         setTimeout(() => {
@@ -67,5 +78,6 @@ function registerForm(event) {
     }
 }
 
-document.getElementById("registerForm").addEventListener("submit", registerForm);
+
+
 

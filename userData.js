@@ -48,10 +48,10 @@ function loadUserData() {
         const user = storedData[index];
 
         if (user) {
-            document.getElementById('edit-name').value = user.username;
-            document.getElementById('edit-email').value = user.email;
-            document.getElementById('edit-phone').value = user.phone;
-            document.getElementById('edit-password').value = user.password;
+            document.getElementById('contact-name').value = user.username;
+            document.getElementById('contact-email').value = user.email;
+            document.getElementById('contact-phone').value = user.phone;
+            document.getElementById('contact-password').value = user.password;
         } else {
             console.error('User not found for index:', index);
         }
@@ -67,27 +67,26 @@ function saveEditedUser(event) {
     if (index !== null) {
         const storedData = JSON.parse(localStorage.getItem('registeredUsers')) || [];
         const editedUser = {
-            username: document.getElementById('edit-name').value,
-            email: document.getElementById('edit-email').value,
-            phone: document.getElementById('edit-phone').value,
-            password: document.getElementById('edit-password').value
+            username: document.getElementById('contact-name').value,
+            email: document.getElementById('contact-email').value,
+            phone: document.getElementById('contact-phone').value,
+            password: document.getElementById('contact-password').value
         };
 
-        if (!validateEditName(editedUser.username)) {
+        if (!validateName(editedUser.username)) {
             alert('Invalid username! Please enter a valid username.');
             return;
         }
 
-        if (!validateEditEmail(editedUser.email)) {
+        if (!validateEmail(editedUser.email)) {
             alert('Invalid email! Please enter a valid email address.');
             return;
         }
 
-        if (!validateEditPhone(editedUser.phone)) {
+        if (!validatePhone(editedUser.phone)) {
             alert('Invalid phone number! Please enter a valid phone number.');
             return;
         }
-
         const originalUser = storedData[index];
         if ((editedUser.username !== originalUser.username || editedUser.phone !== originalUser.phone) && editedUser.password !== originalUser.password) {
             storedData[index] = editedUser; 
@@ -114,30 +113,6 @@ function saveEditedUser(event) {
     } else {
         console.error('No edit index found in localStorage');
     }
-}
-
-// Function to validate name on the edit page
-function validateEditName(name) {
-    const regex = /^[A-Za-z]{1,12}\s{1}[A-Za-z]{1,12}$/;
-    return regex.test(name);
-}
-
-// Function to validate email on the edit page
-function validateEditEmail(email) {
-    const regex = /^[A-Za-z\._\-[0-9]*[@][A-Za-z]*[\.][a-z]{2,3}$/;
-    return regex.test(email);
-}
-
-// Function to validate phone on the edit page
-function validateEditPhone(phone) {
-    const regex = /^[0-9]{10}$/;
-    return regex.test(phone);
-}
-
-// Function to validate password on the edit page
-function validateEditPassword(password) {
-    const regex = /^(?=.*[A-z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*-?&])[A-Za-z\d@$!%*-?&]{8,}$/;
-    return regex.test(password);
 }
 
 // Function to cancel editing
@@ -202,5 +177,7 @@ function addUser(event) {
     }
 }
 
-// Add event listener to the form submit button
-document.getElementById("addUserForm").addEventListener("submit", addUser);
+
+
+// // Add event listener to the form submit button
+// document.getElementById("addUserForm").addEventListener("submit", addUser);

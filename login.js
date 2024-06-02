@@ -1,9 +1,5 @@
 // login.js
 
-var loginPage = document.getElementById("login");
-var registerPage = document.getElementById("register");
-var btn = document.getElementById("btn");
-
 function login() {
     loginPage.style.left = "40px";
     registerPage.style.left = "450px";
@@ -11,14 +7,14 @@ function login() {
 }
 
 // Login form validation
-var loginEmailError = document.getElementById("login-email-error");
-var loginPwdError = document.getElementById("loginPwd-error");
-var loginSubmitError = document.getElementById("loginSubmit-error");
+const loginEmailError = document.getElementById("login-email-error");
+const loginPwdError = document.getElementById("login-pwd-error");
+const loginSubmitError = document.getElementById("login-submit-error");
 
-var input = document.getElementById("login-email");
+const input = document.getElementById("login-email");
 function validateLoginEmail() {
     if (input.value === '') {
-        loginEmailError.innerHTML = 'Email is required';
+        loginEmailError.innerHTML = 'Enter Email';
         return false;
     } else if (!input.checkValidity()) {
         loginEmailError.innerHTML = 'Invalid Email';
@@ -29,14 +25,14 @@ function validateLoginEmail() {
     }
 }
 
-var inputPassword = document.getElementById("login-password");
+const inputPassword = document.getElementById("login-password");
 function validateLoginPassword() {
-    if (inputPassword.value == 0) {
+    if (inputPassword.value === '') {
         loginPwdError.innerHTML = 'Enter Password';
         return false;
     }
-    if (!(inputPassword.value).match(/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*-?&])[A-Za-z\d@$!%*-?&]{8,}$/)) {
-        loginPwdError.innerHTML = 'Invalid password, Contains at least one uppercase letter, one lowercase letter, any one digit and one spl character';
+    if (!/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/.test(inputPassword.value)) {
+        loginPwdError.innerHTML = 'Invalid password';
         return false;
     }
     loginPwdError.innerHTML = '<i class="fa fa-check-circle"></i>';
@@ -68,4 +64,3 @@ function loginForm(event) {
     }
 }
 
-document.getElementById("loginForm").addEventListener("submit", loginForm);

@@ -1,41 +1,38 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit User Data</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body onload="loadUserData()">
-    <h1>Edit User Data</h1>
+    <h1 class="head">Edit User Data</h1>
     <form id="edit-form" onsubmit="saveEditedUser(event)">
-        <label for="edit-name">Name:</label>
-        <input type="text" id="edit-name" name="edit-name">
-        <div id="name-error"></div>
+        <label for="contact-name">Full Name:</label>
+        <input type="text" id="contact-name" class="contact-input">
+        <div id="name-error" class="error-msg"></div>
 
-        <label for="edit-email">Email:</label>
-        <input type="email" id="edit-email" name="edit-email" readonly>
+        <label for="contact-email">Email:</label>
+        <input type="email" id="contact-email" class="contact-input" readonly>
         <div id="email-error"></div>
 
-        <label for="edit-phone">Phone:</label>
-        <input type="tel" id="edit-phone" name="edit-phone">
-        <div id="phone-error"></div>
+        <label for="contact-phone">Phone:</label>
+        <input type="tel" id="contact-phone" class="contact-input" >
+        <div id="phone-error" class="error-msg"></div>
 
-        <label for="edit-password">Password:</label>
-        <input type="password" id="edit-password" name="edit-password">
-        <span class="show-password" >
-            <input type="checkbox" onclick="togglePassword('edit-password')"> 
+        <label for="contact-password">Password:</label>
+        <input type="password" id="contact-password" class="contact-input" onkeyup="validatePassword()" minlength="8">
+        <span class="show-password show-edituser-pwd">
+            <input type="checkbox" onclick="togglePassword('contact-password')"> 
         </span>
-        <div id="password-error"></div>
+        <div id="password-error" class="pwd-error-msg"></div>
 
-        <button type="submit">Save</button>
-        <button type="button" onclick="cancelEdit()">Cancel</button>
+        <button class="save-btn" type="submit">Save</button>
+        <button class="cancel-btn" type="button" onclick="cancelEdit()">Cancel</button>
     </form>
     <script src="common.js"></script>
     <script src="userData.js"></script>
-    
+    <script src="register.js"></script>
 </body>
 </html>
-
-

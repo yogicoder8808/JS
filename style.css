@@ -359,8 +359,8 @@ th {
 }
 .show-edituser-pwd, .show-adduser-pwd{
     position: absolute;
-    left: 60%;
-    bottom:47%;
+    left: 62%;
+    bottom:30%;
 }
 
 label {
@@ -406,8 +406,8 @@ label {
     color: red;
     display: inline-block;
     position: absolute;
-    top: 50.5%;
-    right: 26%;
+    top: 66.5%;
+    right: 22%;
 
 }
 
@@ -437,11 +437,5 @@ label {
     
 .delete-btn:hover{
     background-color: red  
-}
-
-.editToggle{
-    display: inline-block;
-    padding-left: 10px;
-    cursor: pointer;
 }
 

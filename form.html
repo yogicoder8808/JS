@@ -40,7 +40,7 @@
                         <span class="show-password">
                             <input type="checkbox" onclick="togglePassword('login-password')"> 
                         </span>
-                        <span id="login-pwd-error" class="one"></span>
+                        <span id="login-pwd-error"></span>
                     </div>
                     <input type="checkbox" class="check-box"> <span> Remember Password</span>
                     <button class="forget-btn">Forgot Password?</button> 
@@ -53,7 +53,7 @@
                 </form>
 
 
-                <form id="register" class="input-grp span" onsubmit="return registerForm(event)">
+                <form id="register" class="input-grp span">
                     <div class="input-four">
                         <input type="text" class="input-field" placeholder="Full Name" id="contact-name" onkeyup="validateName()" required>
                         <span id="name-error"></span>

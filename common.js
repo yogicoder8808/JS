@@ -83,7 +83,7 @@ function validatePassword() {
         passwordError.innerHTML = 'Enter Password';
         return false;
     } else if (!/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/.test(password)) {
-        passwordError.innerHTML = 'Invalid password.'; //It must contain at least one uppercase letter, one lowercase letter, one digit, and one special character.
+        passwordError.innerHTML = 'Invalid password';
         return false;
     } else {
         passwordError.innerHTML = '<i class="fa fa-check-circle"></i>';

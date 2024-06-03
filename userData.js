@@ -88,6 +88,11 @@ function saveEditedUser(event) {
             return;
         }
         const originalUser = storedData[index];
+        if (!validatePassword(editedUser.password)) {
+            alert('Invalid Input');
+            return;
+        }
+
         if ((editedUser.username !== originalUser.username || editedUser.phone !== originalUser.phone) && editedUser.password !== originalUser.password) {
             storedData[index] = editedUser; 
             localStorage.setItem('registeredUsers', JSON.stringify(storedData));
@@ -178,6 +183,3 @@ function addUser(event) {
 }
 
 
-
-// // Add event listener to the form submit button
-// document.getElementById("addUserForm").addEventListener("submit", addUser);

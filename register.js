@@ -30,9 +30,8 @@ const rePasswordError = document.getElementById("repeat-pwd-error");
 const submitError = document.getElementById("submit-error");
 const checkboxError = document.getElementById("checkbox-error");
 
-function registerForm(event) {
-    event.preventDefault();
-
+function registerForm() {
+    
     const checkbox = document.getElementById("checkbox-term");
     const name = document.getElementById("contact-name").value;
     const email = document.getElementById("contact-email").value;

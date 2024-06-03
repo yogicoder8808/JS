@@ -8,10 +8,12 @@
 </head>
 <body>
 <h1>STORED USER DATA</h1>
+<button class="adduser-btn" onclick="navigateToAddUser()">Add User</button>
+<button class="logout-btn" onclick="logout()">Logout</button>
 <table>
     <thead>
         <tr>
-            <th>Username</th>
+            <th>Full Name</th>
             <th>Email</th>
             <th>Phone</th>
             <th>Password</th>
@@ -22,7 +24,7 @@
         <!-- User data will be dynamically added here -->
     </tbody>
 </table>
-
-<script src="script.js"></script>
+<script src="common.js"></script>
+<script src="userData.js"></script>
 </body>
 </html>

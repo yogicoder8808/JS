@@ -33,11 +33,14 @@ function editRow(index) {
 
 // Function to delete user data
 function deleteRow(index) {
-    const storedData = JSON.parse(localStorage.getItem('registeredUsers')) || [];
-    storedData.splice(index, 1);
-    localStorage.setItem('registeredUsers', JSON.stringify(storedData));
-    window.alert("User data deleted successfully!");
-    displayStoredData();
+    const confirmation = window.confirm("Are you sure you want to delete this user data?");
+
+    if (confirmation){
+        const storedData = JSON.parse(localStorage.getItem('registeredUsers')) || [];
+        storedData.splice(index, 1);
+        localStorage.setItem('registeredUsers', JSON.stringify(storedData));
+        displayStoredData();
+    }  
 }
 
 // Function to load user data into the edit form

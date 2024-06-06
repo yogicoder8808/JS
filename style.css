@@ -194,11 +194,25 @@ h6{
 
 /* JavaScript */
 
-.input-one span{
+/* .input-one span{
     position: absolute;
     color: red;
     top: 3%;  
+} */
+
+.input-one span{
+    position: absolute;
+    color: red;
+    top: 3%; 
+
 }
+
+/* 
+.data i{
+    position: absolute;
+    top: -105px;
+    color: seagreen;
+} */
 
 .input-two span{
     position: absolute;

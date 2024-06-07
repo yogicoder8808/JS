@@ -39,7 +39,7 @@ function validateName() {
         nameError.innerHTML = 'Enter Full name';
         return false;
     } else {
-        nameError.innerHTML = '<i class="fa fa-check-circle"></i>';
+        nameError.innerHTML = '<i class="fa fa-check-circle good"></i>';
         return true;
     }
 }

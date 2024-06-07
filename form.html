@@ -33,10 +33,10 @@
                 <form id="login" class="input-grp"  onsubmit="return loginForm(event)">
                     <div class="input-one ">
                          <input type="email" class="input-field " placeholder="Enter Email" id="login-email" onkeyup="validateLoginEmail()" required>
-                        <span id="login-email-error" class="data"></span>
+                        <div id="login-email-error"></div>
                     </div>
                     <div class="input-two">
-                        <input type="password" class="input-field" placeholder="Enter Password" id="login-password" onkeyup="validateLoginPassword()" minlength="8" required>
+                        <input type="password" class="input-field" placeholder="Enter Password" id="login-password" onblur="validateLoginPassword()" minlength="8" required>
                         <span class="show-password">
                             <input type="checkbox" onclick="togglePassword('login-password')"> 
                         </span>

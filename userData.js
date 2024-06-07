@@ -33,10 +33,10 @@ function editRow(index) {
 
 // Function to delete user data
 function deleteRow(index) {
-    const confirmation = window.confirm("Are you sure you want to delete this user data?");
-
+    const storedData = JSON.parse(localStorage.getItem('registeredUsers')) || [];
+    const user = storedData[index];
+    const confirmation = window.confirm(`Are you sure to delete this user "${user.email}"?`);
     if (confirmation){
-        const storedData = JSON.parse(localStorage.getItem('registeredUsers')) || [];
         storedData.splice(index, 1);
         localStorage.setItem('registeredUsers', JSON.stringify(storedData));
         displayStoredData();

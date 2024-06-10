@@ -32,14 +32,14 @@
 
                 <form id="login" class="input-grp"  onsubmit="return loginForm(event)">
                     <div class="input-one ">
-                         <input type="email" class="input-field " placeholder="Enter Email" id="login-email" onkeyup="validateLoginEmail()" required>
+                         <input type="email" class="input-field " placeholder="Enter Email" id="login-email" onchange="validateLoginEmail()" required>
                         <span id="login-email-error" class="data"></span>
                     </div>
                     <div class="input-two">
-                        <input type="password" class="input-field" placeholder="Enter Password" id="login-password" onkeyup="validateLoginPassword()" minlength="8" required>
-                        <span class="show-password">
+                        <input type="password" class="input-field" placeholder="Enter Password" id="login-password" onchange="validateLoginPassword()" minlength="8" required>
+                        <div class="show-password">
                             <input type="checkbox" onclick="togglePassword('login-password')"> 
-                        </span>
+                        </div>
                         <span id="login-pwd-error"></span>
                     </div>
                     <input type="checkbox" class="check-box"> <span> Remember Password</span>
@@ -55,29 +55,29 @@
 
                 <form id="register" class="input-grp span">
                     <div class="input-four">
-                        <input type="text" class="input-field" placeholder="Full Name" id="contact-name" onkeyup="validateName()" required>
+                        <input type="text" class="input-field" placeholder="Full Name" id="contact-name" onchange="validateName()" required>
                         <span id="name-error"></span>
                     </div>
                     <div class="input-five">
-                        <input type="email" class="input-field" placeholder="Email" id="contact-email" onkeyup="validateEmail()" required>
+                        <input type="email" class="input-field" placeholder="Email" id="contact-email" onchange="validateEmail()" required>
                         <span id="email-error"></span>
                     </div>
                     <div class="input-six">
-                        <input type="tel" class="input-field" placeholder="Phone Number" id="contact-phone" onkeyup="validatePhone()" required>
+                        <input type="tel" class="input-field" placeholder="Phone Number" id="contact-phone" onchange="validatePhone()" required>
                         <span id="phone-error"></span>
                     </div>
                     <div class="input-seven">
-                        <input type="password" class="input-field" placeholder="Enter Password" id="contact-password" onkeyup="validatePassword()" minlength="8" required>
-                        <span class="show-password" >
+                        <input type="password" class="input-field" placeholder="Enter Password" id="contact-password" onchange="validatePassword()" minlength="8" required>
+                        <div class="show-password" >
                             <input type="checkbox" onclick="togglePassword('contact-password')"> 
-                        </span>
+                        </div>
                         <span id="password-error"></span>
                     </div>
                     <div class="input-eight">
-                        <input type="password" class="input-field" placeholder="Repeat Password" id="contact-repeat-password" onkeyup="validateRepeatPassword()" minlength="8" required>
-                        <span class="show-password">
+                        <input type="password" class="input-field" placeholder="Repeat Password" id="contact-repeat-password" onchange="validateRepeatPassword()" minlength="8" required>
+                        <div class="show-password">
                             <input type="checkbox" onclick="togglePassword('contact-repeat-password')"> 
-                        </span>
+                        </div>
                         
                         <span id="repeat-pwd-error"></span>
                     </div>

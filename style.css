@@ -194,28 +194,16 @@ h6{
 
 /* JavaScript */
 
-/* .input-one span{
-    position: absolute;
-    color: red;
-    top: 3%;  
-} */
 
 .input-one span{
-    position: absolute;
+    position: relative;
     color: red;
     top: 3%; 
 
 }
 
-/* 
-.data i{
-    position: absolute;
-    top: -105px;
-    color: seagreen;
-} */
-
 .input-two span{
-    position: absolute;
+    position: relative;
     color: red;
     top: 20%;  
 }
@@ -226,23 +214,23 @@ h6{
 }
 
 .input-four span{
-    position: absolute;
+    position: relative;
     color: red;
     top: 2%;  
 }
 .input-five span{
-    position: absolute;
+    position: relative;
     color: red;
     top: 15%;  
 }
 .input-six span{
-    position: absolute;
+    position: relative;
     color: red;
     top: 29%;  
 }
 .input-seven span,
 .input-eight span{
-    position: absolute;
+    position: relative;
     color: red;
     top: 20%;  
 }
@@ -254,14 +242,10 @@ h6{
 }
 
 
-.input-one span i,
-.input-two span i,
-.input-four span i,
-.input-five span i,
-.input-six span i,
-.input-seven span i,
-.input-eight span i{
+.fa-check-circle{
     color: seagreen;
+    position: absolute;
+    margin: auto;
 }
 
 
@@ -270,7 +254,6 @@ h6{
 .input-two, .input-seven, .input-eight {
     position: relative;  
     align-items: center;
-
 }
 
 .input-field {
@@ -280,8 +263,10 @@ h6{
 }
 
 .show-password {
+    position: absolute;
     display: inline-block;
-    padding-left: 60px;
+    padding-left: 40px;
+    padding-top: 20px;
     cursor: pointer;
 }
 

@@ -16,7 +16,7 @@
 
 .form-box{
     width: 354px;
-    height: 560px;
+    height: 600px;
     background-color: #fff;
     position: relative;
     margin: 6% auto;
@@ -85,6 +85,12 @@ h5{
     display: inline-block;
 }
 
+.input-container {
+    position: relative;
+    margin-bottom: 10px;
+}
+
+
 .input-grp span{
     top: 43.5%;
     color: #777;
@@ -99,7 +105,6 @@ h5{
     position: absolute;
 }
 
-
 .input-field{
     width: 100%;
     padding: 10px 0;
@@ -111,6 +116,7 @@ h5{
     outline: none;
     background: transparent;
     display: inline-block;
+    box-sizing: border-box;
 }
 
 .submit-btn{
@@ -131,9 +137,22 @@ h5{
 
 .check-box{
     margin: 30px 10px 30px 0px;
-
 }
 
+/* login & register checkbox */
+.box-one{
+    margin-top: 7px;
+}
+.box-two{
+    margin-top: 3px;
+}
+
+/* Edit & Add checkbox */
+.box-three, .box-four{
+    position: absolute;
+    margin-top: -45px;
+    margin-left: 415px;
+}
 
 .forget-btn{
     position: absolute;
@@ -188,100 +207,38 @@ h6{
 
 @media(max-width:700px){
     #register{
-       top: -60%;
+       top: -50%;
     }
 }
 
 /* JavaScript */
 
-/* .input-one span{
-    position: absolute;
+.input-container span{
     color: red;
-    top: 3%;  
-} */
-
-.input-one span{
     position: absolute;
-    color: red;
-    top: 3%; 
-
+    top: 100%; 
+    left: 0;
+    width: 100%;
+    box-sizing: border-box;
+    white-space: nowrap;
+    opacity: 0.7;
 }
 
-/* 
-.data i{
-    position: absolute;
-    top: -105px;
+
+.fa-check-circle{
     color: seagreen;
-} */
-
-.input-two span{
-    position: absolute;
-    color: red;
-    top: 20%;  
-}
-.input-three span{
-    position: absolute;
-    color: red;
-    top: 80%;  
-}
-
-.input-four span{
-    position: absolute;
-    color: red;
-    top: 2%;  
-}
-.input-five span{
-    position: absolute;
-    color: red;
-    top: 15%;  
-}
-.input-six span{
-    position: absolute;
-    color: red;
-    top: 29%;  
-}
-.input-seven span,
-.input-eight span{
-    position: absolute;
-    color: red;
-    top: 20%;  
-}
-
-.input-nine span{
-    position: absolute;
-    color: red;
-    top: 105%;  
+    margin-top: -30px;
+    margin-left: 270px;
 }
 
 
-.input-one span i,
-.input-two span i,
-.input-four span i,
-.input-five span i,
-.input-six span i,
-.input-seven span i,
-.input-eight span i{
-    color: seagreen;
-}
-
-
-/* Password toggle */
-
-.input-two, .input-seven, .input-eight {
-    position: relative;  
-    align-items: center;
-
-}
-
-.input-field {
-    width: calc(120% - 80px);
-    padding: 10px;
-    margin-right: 10px;
-}
+/* Password toggle btn*/
 
 .show-password {
+    position: absolute;
     display: inline-block;
-    padding-left: 60px;
+    padding-left: 30px;
+    padding-top: 15px;
     cursor: pointer;
 }
 
@@ -371,11 +328,6 @@ th {
 .contact-input:hover {
     background-color: #f5f5f5;
 }
-.show-edituser-pwd, .show-adduser-pwd{
-    position: absolute;
-    left: 62%;
-    bottom:30%;
-}
 
 label {
     display: block;
@@ -389,14 +341,14 @@ label {
     padding-bottom: 5px;
     padding-left: 15px;
     padding-right: 15px;
-    background-color: #3498db; /* Blue */
+    background-color: #3498db; 
     color: #fff;
     border: 1px solid #2980b9;
 }
 
 .cancel-btn,.goBack-btn{
     padding: 5px;
-    background-color: #e74c3c; /* Red */
+    background-color: #e74c3c; 
     color: #fff;
     border: 1px solid #c0392b;
 }
@@ -410,21 +362,27 @@ label {
 }
 
 .error-msg{
- color: red;
- position: absolute;
- display: inline-block;
- padding: 10px;
-}
-
-.pwd-error-msg{
+    font-size: 12px;
     color: red;
-    display: inline-block;
     position: absolute;
-    top: 66.5%;
-    right: 22%;
-
+    top: 80%;
+    left: 0;
+    width: 100%;
+    box-sizing: border-box;
+    white-space: nowrap;
+    opacity: 0.7;
 }
-
+.pwd-error-msg{
+    font-size: 12px;
+    color: red;
+    position: absolute;
+    top: 80%;
+    left: 0;
+    width: 100%;
+    box-sizing: border-box;
+    white-space: nowrap;
+    opacity: 0.7;
+}
 
 /* Edit and Delete button */
 
@@ -433,23 +391,23 @@ label {
     padding-bottom: 5px;
     padding-left: 15px;
     padding-right: 15px;
-    background-color: #3498db; /* Blue */
+    background-color: #3498db; 
     color: #fff;
     border: 1px solid #2980b9;
 }
 
 .delete-btn{
     padding: 5px;
-    background-color: #e74c3c; /* Red */
+    background-color: #e74c3c; 
     color: #fff;
     border: 1px solid #c0392b;
 }
 
 .edit-btn:hover{
-    background-color:blue
+    background-color:blue;
 }
     
 .delete-btn:hover{
-    background-color: red  
+    background-color: red; 
 }
 

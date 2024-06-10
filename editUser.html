@@ -9,25 +9,34 @@
 <body onload="loadUserData()">
     <h1 class="head">Edit User Data</h1>
     <form id="edit-form" onsubmit="saveEditedUser(event)">
-        <label for="contact-name">Full Name:</label>
-        <input type="text" id="contact-name" class="contact-input">
-        <div id="name-error" class="error-msg"></div>
 
-        <label for="contact-email">Email:</label>
-        <input type="email" id="contact-email" class="contact-input" readonly>
-        <div id="email-error"></div>
+        <div class="input-container">
+            <label for="contact-name">Full Name:</label>
+            <input type="text" id="contact-name" class="contact-input" onchange="validateName()" required>
+            <div id="name-error" class="error-msg"></div>
+        </div>
+        
+        <div class="input-container">
+            <label for="contact-email">Email:</label>
+            <input type="email" id="contact-email" class="contact-input" readonly>
+        </div>
+        
+        <div class="input-container">
+            <label for="contact-phone">Phone:</label>
+            <input type="tel" id="contact-phone" class="contact-input" onchange="validatePhone()" required>
+            <div id="phone-error" class="error-msg"></div>
+        </div>
+        
+        <div class="input-container">
+            <label for="contact-password">Password:</label>
+            <input type="password" id="contact-password" class="contact-input"  onchange="validatePassword()" minlength="8" required>
+            <span class="box-three">
+                <input type="checkbox" onclick="togglePassword('contact-password')"> 
+            </span>
+            <div id="password-error" class="pwd-error-msg"></div>
+        </div>
 
-        <label for="contact-phone">Phone:</label>
-        <input type="tel" id="contact-phone" class="contact-input" >
-        <div id="phone-error" class="error-msg"></div>
-
-        <label for="contact-password">Password:</label>
-        <input type="password" id="contact-password" class="contact-input" onkeyup="validatePassword()" minlength="8">
-        <span class="show-password show-edituser-pwd">
-            <input type="checkbox" onclick="togglePassword('contact-password')"> 
-        </span>
-        <div id="password-error" class="pwd-error-msg"></div>
-
+        <br>
         <button class="save-btn" type="submit">Save</button>
         <button class="cancel-btn" type="button" onclick="cancelEdit()">Cancel</button>
     </form>

@@ -6,7 +6,6 @@
         </title>
         <link rel="stylesheet" href="style.css" >
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">					
-
     </head>
     <body>
         <div class="main">
@@ -28,66 +27,75 @@
 
                 <h5>(or)</h5>
 
-                <br/>
-
                 <form id="login" class="input-grp"  onsubmit="return loginForm(event)">
-                    <div class="input-one ">
-                         <input type="email" class="input-field " placeholder="Enter Email" id="login-email" onchange="validateLoginEmail()" required>
-                        <span id="login-email-error" class="data"></span>
+
+                    <div class="input-container">
+                        <input type="email" class="input-field " placeholder="Enter Email" id="login-email" onchange="validateLoginEmail()" required>
+                            <span id="login-email-error" class="data"></span>
                     </div>
-                    <div class="input-two">
-                        <input type="password" class="input-field" placeholder="Enter Password" id="login-password" onchange="validateLoginPassword()" minlength="8" required>
-                        <div class="show-password">
-                            <input type="checkbox" onclick="togglePassword('login-password')"> 
-                        </div>
-                        <span id="login-pwd-error"></span>
+                    
+                    <div class="input-container">
+                            <input type="password" class="input-field" placeholder="Enter Password" id="login-password" onchange="validateLoginPassword()" minlength="8" required>
+                            <div class="show-password">
+                                <input type="checkbox" onclick="togglePassword('login-password')"> 
+                            </div>
+                            <span id="login-pwd-error"></span>
                     </div>
-                    <input type="checkbox" class="check-box"> <span> Remember Password</span>
+                    
+                    <input type="checkbox" class="check-box"> <span class="box-one"> Remember Password</span>
                     <button class="forget-btn">Forgot Password?</button> 
-                    <div class="input-three">
-                        <button type="submit" class="submit-btn" onclick="loginForm()">Log In</button> 
-                        <span id="login-submit-error"></span>
+                    <br><br>
+                    <div class="input-container">
+                            <button type="submit" class="submit-btn" onclick="loginForm()">Log In</button> 
+                            <span id="login-submit-error"></span>
                     </div>
-                    <br/> <br/> <br/> 
+                    
+                    <br> <br> 
                     <h6 class="btn-h6">Not a member? </h6> <button class="reg-btn" onclick="register()">Register</button>
                 </form>
 
 
                 <form id="register" class="input-grp span">
-                    <div class="input-four">
-                        <input type="text" class="input-field" placeholder="Full Name" id="contact-name" onchange="validateName()" required>
-                        <span id="name-error"></span>
-                    </div>
-                    <div class="input-five">
-                        <input type="email" class="input-field" placeholder="Email" id="contact-email" onchange="validateEmail()" required>
-                        <span id="email-error"></span>
-                    </div>
-                    <div class="input-six">
-                        <input type="tel" class="input-field" placeholder="Phone Number" id="contact-phone" onchange="validatePhone()" required>
-                        <span id="phone-error"></span>
-                    </div>
-                    <div class="input-seven">
-                        <input type="password" class="input-field" placeholder="Enter Password" id="contact-password" onchange="validatePassword()" minlength="8" required>
-                        <div class="show-password" >
-                            <input type="checkbox" onclick="togglePassword('contact-password')"> 
-                        </div>
-                        <span id="password-error"></span>
-                    </div>
-                    <div class="input-eight">
-                        <input type="password" class="input-field" placeholder="Repeat Password" id="contact-repeat-password" onchange="validateRepeatPassword()" minlength="8" required>
-                        <div class="show-password">
-                            <input type="checkbox" onclick="togglePassword('contact-repeat-password')"> 
-                        </div>
-                        
-                        <span id="repeat-pwd-error"></span>
-                    </div>
-                    <input type="checkbox" class="check-box" id="checkbox-term" required> <span id="checkbox-error"> I agree to the terms & conditions</span>
-                    <div class="input-nine">
-                        <button type="submit" class="submit-btn" onclick="registerForm()">Register</button>
-                        <span id="submit-error"></span>
+
+                    <div class="input-container">
+                            <input type="text" class="input-field" placeholder="Full Name" id="contact-name" onchange="validateName()" required>
+                            <span id="name-error"></span>
                     </div>
                     
-                </form>1
+                    <div class="input-container">
+                            <input type="email" class="input-field" placeholder="Email" id="contact-email" onchange="validateEmail()" required>
+                            <span id="email-error"></span>
+                    </div>
+                    
+                    <div class="input-container">
+                            <input type="tel" class="input-field" placeholder="Phone Number" id="contact-phone" onchange="validatePhone()" required>
+                            <span id="phone-error"></span>
+                    </div>
+                    
+                    <div class="input-container">
+                            <input type="password" class="input-field" placeholder="Enter Password" id="contact-password" onchange="validatePassword()" minlength="8" required>
+                            <div class="show-password" >
+                                <input type="checkbox" onclick="togglePassword('contact-password')"> 
+                            </div>
+                            <span id="password-error"></span>
+                    </div>
+                    
+                    <div class="input-container">
+                            <input type="password" class="input-field" placeholder="Repeat Password" id="contact-repeat-password" onchange="validateRepeatPassword()" minlength="8" required>
+                            <div class="show-password">
+                                <input type="checkbox" onclick="togglePassword('contact-repeat-password')"> 
+                            </div>
+                            <span id="repeat-pwd-error"></span>
+                    </div>
+                    
+                    <input type="checkbox" class="check-box" id="checkbox-term" required> <span id="checkbox-error" class="box-two"> I agree to the terms & conditions</span>
+                    
+                    <div class="input-container">
+                            <button type="submit" class="submit-btn" onclick="registerForm()">Register</button>
+                            <span id="submit-error"></span>
+                    </div>
+                    
+                </form>
             </div>
         </div>
         <script src="common.js"></script>

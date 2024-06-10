@@ -9,25 +9,35 @@
 <body>
     <h1>ADD USER</h1>
     <form id="add-form" onsubmit="addUser(event)">
-        <label for="contact-name">Full Name:</label>
-        <input type="text" id="contact-name" class="contact-input" placeholder="Enter Full Name">
-        <div id="name-error" class="error-msg"></div>
 
-        <label for="contact-email">Email:</label>
-        <input type="email" id="contact-email" class="contact-input" placeholder="Enter Email ID">
-        <div id="email-error" class="error-msg"></div>
-
-        <label for="contact-phone">Phone:</label>
-        <input type="tel" id="contact-phone"  class="contact-input" placeholder="Enter Phone Number">
-        <div id="phone-error" class="error-msg"></div>
-
-        <label for="contact-password">Password:</label>
-        <input type="password" id="contact-password" class="contact-input" placeholder="Enter Password" onkeyup="validatePassword()">
-        <span class="show-password show-adduser-pwd">
-            <input type="checkbox" onclick="togglePassword('contact-password')"> 
-        </span>
-        <div id="password-error" class="pwd-error-msg"></div>
-
+        <div class="input-container">
+            <label for="contact-name">Full Name:</label>
+            <input type="text" id="contact-name" class="contact-input" placeholder="Enter Full Name" onchange="validateName()" required>
+            <div id="name-error" class="error-msg"></div>
+        </div>
+        
+        <div class="input-container">
+            <label for="contact-email">Email:</label>
+            <input type="email" id="contact-email" class="contact-input" placeholder="Enter Email ID" onchange="validateEmail()" required>
+            <div id="email-error" class="error-msg"></div>
+        </div>
+        
+        <div class="input-container">
+            <label for="contact-phone">Phone:</label>
+            <input type="tel" id="contact-phone"  class="contact-input" placeholder="Enter Phone Number" onchange="validatePhone()" required>
+            <div id="phone-error" class="error-msg"></div>
+        </div>
+        
+        <div class="input-container">
+            <label for="contact-password">Password:</label>
+            <input type="password" id="contact-password" class="contact-input" placeholder="Enter Password" onchange="validatePassword()" minlength="8" required>
+            <span class="box-four">
+                <input type="checkbox" onclick="togglePassword('contact-password')"> 
+            </span>
+            <div id="password-error" class="pwd-error-msg"></div>
+        </div>
+        
+        <br>
         <button class="add-btn" type="submit">Add User</button>
         <button class="goBack-btn" type="button" onclick="goBack()">Go Back</button>
     </form>

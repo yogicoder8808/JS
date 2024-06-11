@@ -30,13 +30,13 @@ function togglePassword(id) {
 function validateName() {
     const name = document.getElementById("contact-name").value;
     const trimmedName = name.trim();
-    if (trimmedName !== name) {
-        nameError.innerHTML = 'Trailing spaces not allowed';
+    if (trimmedName === '') {
+        nameError.innerHTML = 'Please provide your name';
         return false;
     }
-    const nameParts = name.split(' ');
-    if (nameParts.length !== 2) {
-        nameError.innerHTML = 'Enter Full name';
+    const nameParts = trimmedName.split(' ');
+    if (nameParts.length < 2) {
+        nameError.innerHTML = 'Please enter your full name';
         return false;
     } else {
         nameError.innerHTML = '<i class="fa fa-check-circle"></i>';
@@ -44,13 +44,14 @@ function validateName() {
     }
 }
 
+
 function validateEmail() {
     const email = document.getElementById("contact-email");
     if (email.value === '') {
-        emailError.innerHTML = 'Email is required';
+        emailError.innerHTML = 'Please provide your email address';
         return false;
     } else if (!email.checkValidity()) {
-        emailError.innerHTML = 'Invalid Email';
+        emailError.innerHTML = 'Please enter a valid email address';
         return false;
     } else {
         emailError.innerHTML = '<i class="fa fa-check-circle"></i>';
@@ -61,15 +62,15 @@ function validateEmail() {
 function validatePhone() {
     const phone = document.getElementById("contact-phone").value.trim();
     if (phone.length === 0) {
-        phoneError.innerHTML = 'Enter phone number';
+        phoneError.innerHTML = 'Please provide your phone number';
         return false;
     }
     if (isNaN(phone)) {
-        phoneError.innerHTML = 'only digits';
+        phoneError.innerHTML = 'Please enter only digits for the phone number';
         return false;
     }
     if (phone.length !== 10) {
-        phoneError.innerHTML = '10 digits required';
+        phoneError.innerHTML = 'Please enter a 10-digit phone number';
         return false;
     }
     phoneError.innerHTML = '<i class="fa fa-check-circle"></i>';
@@ -80,15 +81,16 @@ function validatePhone() {
 function validatePassword() {
     const password = document.getElementById("contact-password").value;
     if (password.length == '') {
-        passwordError.innerHTML = 'Enter Password';
+        passwordError.innerHTML = 'Please provide your password';
         return false;
-    } else if (!/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/.test(password)) {
-        passwordError.innerHTML = 'Invalid password';
+    }else if (!/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/.test(password)) {
+        passwordError.innerHTML = 'Please enter a valid password';
         return false;
-    } else {
+    }else{
         passwordError.innerHTML = '<i class="fa fa-check-circle"></i>';
         return true;
-    }
+    }     
 }
+
 
 

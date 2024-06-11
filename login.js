@@ -8,16 +8,17 @@ function login() {
 
 // Login form validation
 const loginEmailError = document.getElementById("login-email-error");
-const loginPwdError = document.getElementById("login-pwd-error");
+const loginPasswordError = document.getElementById("login-password-error");
 const loginSubmitError = document.getElementById("login-submit-error");
 
 const input = document.getElementById("login-email");
+
 function validateLoginEmail() {
     if (input.value === '') {
-        loginEmailError.innerHTML = 'Enter Email';
+        loginEmailError.innerHTML = 'Please provide your email address';
         return false;
     } else if (!input.checkValidity()) {
-        loginEmailError.innerHTML = 'Invalid Email';
+        loginEmailError.innerHTML = 'Please enter a valid email address';
         return false;
     } else {
         loginEmailError.innerHTML = '<i class="fa fa-check-circle"></i>';
@@ -28,14 +29,14 @@ function validateLoginEmail() {
 const inputPassword = document.getElementById("login-password");
 function validateLoginPassword() {
     if (inputPassword.value === '') {
-        loginPwdError.innerHTML = 'Enter Password';
+        loginPasswordError.innerHTML = 'Please provide your password';
         return false;
     }
     if (!/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/.test(inputPassword.value)) {
-        loginPwdError.innerHTML = 'Invalid password';
+        loginPasswordError.innerHTML = 'Please enter a valid password';
         return false;
     }
-    loginPwdError.innerHTML = '<i class="fa fa-check-circle"></i>';
+    loginPasswordError.innerHTML = '<i class="fa fa-check-circle"></i>';
     return true;
 }
 
@@ -49,13 +50,13 @@ function loginForm(event) {
 
     if (!validateLoginEmail() || !validateLoginPassword()) {
         loginSubmitError.style.display = 'block';
-        loginSubmitError.innerHTML = 'Please fix error to login';
+        loginSubmitError.innerHTML = 'Please correct the errors to login.';
         setTimeout(() => {
             loginSubmitError.style.display = 'none';
         }, 3000);
         return false;
     } else if (!user) {
-        window.alert("Invalid Email or Password");
+        window.alert("Invalid email or password. Please verify your credentials.");
         return false;
     } else {
         window.alert("User logged in Successfully");

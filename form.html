@@ -27,19 +27,19 @@
 
                 <h5>(or)</h5>
 
-                <form id="login" class="input-grp"  onsubmit="return loginForm(event)">
+                <form id="login" class="input-group"  onsubmit="return loginForm(event)">
 
                     <div class="input-container">
-                        <input type="email" class="input-field " placeholder="Enter Email" id="login-email" onchange="validateLoginEmail()" required>
+                        <input type="email" class="input-field " placeholder="Enter Email" id="login-email" onchange="validateLoginEmail()" required >
                             <span id="login-email-error" class="data"></span>
                     </div>
                     
                     <div class="input-container">
-                            <input type="password" class="input-field" placeholder="Enter Password" id="login-password" onchange="validateLoginPassword()" minlength="8" required>
+                            <input type="password" class="input-field" placeholder="Enter Password" id="login-password" onchange="validateLoginPassword()" minlength="8" required title="Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, one digit, and one special character.">
                             <div class="show-password">
                                 <input type="checkbox" onclick="togglePassword('login-password')"> 
                             </div>
-                            <span id="login-pwd-error"></span>
+                            <span id="login-password-error"></span>
                     </div>
                     
                     <input type="checkbox" class="check-box"> <span class="box-one"> Remember Password</span>
@@ -51,11 +51,11 @@
                     </div>
                     
                     <br> <br> 
-                    <h6 class="btn-h6">Not a member? </h6> <button class="reg-btn" onclick="register()">Register</button>
+                    <h6>Not a member? </h6> <button class="register-btn" onclick="register()">Register</button>
                 </form>
 
 
-                <form id="register" class="input-grp span">
+                <form id="register" class="input-group register-span">
 
                     <div class="input-container">
                             <input type="text" class="input-field" placeholder="Full Name" id="contact-name" onchange="validateName()" required>
@@ -73,7 +73,7 @@
                     </div>
                     
                     <div class="input-container">
-                            <input type="password" class="input-field" placeholder="Enter Password" id="contact-password" onchange="validatePassword()" minlength="8" required>
+                            <input type="password" class="input-field" placeholder="Enter Password" id="contact-password" onchange="validatePassword()" minlength="8" required title="Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, one digit, and one special character.">
                             <div class="show-password" >
                                 <input type="checkbox" onclick="togglePassword('contact-password')"> 
                             </div>
@@ -81,11 +81,11 @@
                     </div>
                     
                     <div class="input-container">
-                            <input type="password" class="input-field" placeholder="Repeat Password" id="contact-repeat-password" onchange="validateRepeatPassword()" minlength="8" required>
+                            <input type="password" class="input-field" placeholder="Confirm Password" id="contact-confirm-password" onchange="validateRepeatPassword()" minlength="8" required>
                             <div class="show-password">
-                                <input type="checkbox" onclick="togglePassword('contact-repeat-password')"> 
+                                <input type="checkbox" onclick="togglePassword('contact-confirm-password')"> 
                             </div>
-                            <span id="repeat-pwd-error"></span>
+                            <span id="confirm-password-error"></span>
                     </div>
                     
                     <input type="checkbox" class="check-box" id="checkbox-term" required> <span id="checkbox-error" class="box-two"> I agree to the terms & conditions</span>

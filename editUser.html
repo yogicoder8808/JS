@@ -30,11 +30,11 @@
         
         <div class="input-container">
             <label for="contact-password">Password:</label>
-            <input type="password" id="contact-password" class="contact-input"  onchange="validatePassword()" minlength="8" required>
+            <input type="password" id="contact-password" class="contact-input"  onchange="validatePassword()" minlength="8" required title="Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, one digit, and one special character.">
             <span class="box-three">
                 <input type="checkbox" onclick="togglePassword('contact-password')"> 
             </span>
-            <div id="password-error" class="pwd-error-msg"></div>
+            <div id="password-error" class="password-error-msg"></div>
         </div>
 
         <br>

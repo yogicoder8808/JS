@@ -71,9 +71,9 @@ function saveEditedUser(event) {
     if (index !== null) {
         const storedData = JSON.parse(localStorage.getItem('registeredUsers')) || [];
         const editedUser = {
-            username: document.getElementById('contact-name').value,
+            username: document.getElementById('contact-name').value.trim(),
             email: document.getElementById('contact-email').value,
-            phone: document.getElementById('contact-phone').value,
+            phone: document.getElementById('contact-phone').value.trim(),
             password: document.getElementById('contact-password').value
         };
 

@@ -8,25 +8,26 @@ function register() {
 
 function validateRepeatPassword() {
     const password = document.getElementById("contact-password").value;
-    const reEnterPwd = document.getElementById("contact-repeat-password").value;
-    if (reEnterPwd.length == '') {
-        rePasswordError.innerHTML = 'Re-Enter Password';
+    const confirmPassword = document.getElementById("contact-confirm-password").value;
+    if (confirmPassword.length == '') {
+        confirmPasswordError.innerHTML = 'Confirm your password to match the one entered above.';
         return false;
-    }
-    if (reEnterPwd != password) {
-        rePasswordError.innerHTML = 'P/w not matching';
+    }else if (confirmPassword != password) {
+        confirmPasswordError.innerHTML = 'Passwords do not match. Please try again.';
         return false;
+    }else{
+        confirmPasswordError.innerHTML = '<i class="fa fa-check-circle"></i>';
+        return true;
     }
-    rePasswordError.innerHTML = '<i class="fa fa-check-circle"></i>';
-    return true;
-}
+    }
+    
 
 // Registration form validation
 const nameError = document.getElementById("name-error");
 const emailError = document.getElementById("email-error");
 const phoneError = document.getElementById("phone-error");
 const passwordError = document.getElementById("password-error");
-const rePasswordError = document.getElementById("repeat-pwd-error");
+const confirmPasswordError = document.getElementById("confirm-password-error");
 const submitError = document.getElementById("submit-error");
 const checkboxError = document.getElementById("checkbox-error");
 
@@ -40,14 +41,14 @@ function registerForm() {
 
     if (!validateName() || !validateEmail() || !validatePhone() || !validatePassword() || !validateRepeatPassword()) {
         submitError.style.display = 'block';
-        submitError.innerHTML = 'Please fix error to submit';
+        submitError.innerHTML = 'Please correct the errors to submit the form.';
         setTimeout(() => {
             submitError.style.display = 'none';
         }, 3000);
         return false;
     } else if (!checkbox.checked) {
         submitError.style.display = 'block';
-        submitError.innerHTML = 'Please agree';
+        submitError.innerHTML = 'Please accept the terms and conditions to submit the form.';
         setTimeout(() => {
             submitError.style.display = 'none';
         }, 3000);

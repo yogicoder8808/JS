@@ -7,8 +7,8 @@ function register() {
 }
 
 function validateRepeatPassword() {
-    const password = document.getElementById("contact-password").value;
-    const confirmPassword = document.getElementById("contact-confirm-password").value;
+    const password = document.getElementById("user-password").value;
+    const confirmPassword = document.getElementById("user-confirm-password").value;
     if (confirmPassword.length == '') {
         confirmPasswordError.innerHTML = 'Confirm your password to match the one entered above.';
         return false;
@@ -34,10 +34,10 @@ const checkboxError = document.getElementById("checkbox-error");
 function registerForm() {
     
     const checkbox = document.getElementById("checkbox-term");
-    const name = document.getElementById("contact-name").value;
-    const email = document.getElementById("contact-email").value;
-    const phone = document.getElementById("contact-phone").value;
-    const password = document.getElementById("contact-password").value;
+    const name = document.getElementById("user-name").value;
+    const email = document.getElementById("user-email").value;
+    const phone = document.getElementById("user-phone").value;
+    const password = document.getElementById("user-password").value;
 
     if (!validateName() || !validateEmail() || !validatePhone() || !validatePassword() || !validateRepeatPassword()) {
         submitError.style.display = 'block';
@@ -77,7 +77,5 @@ function registerForm() {
         return true;
     }
 }
-
-
 
 

@@ -27,10 +27,10 @@
 
                 <h5>(or)</h5>
 
-                <form id="login" class="input-group"  onsubmit="return loginForm(event)">
+                <form id="login-form" class="input-group"  onsubmit="return loginForm(event)">
 
                     <div class="input-container">
-                        <input type="email" class="input-field " placeholder="Enter Email" id="login-email" onchange="validateLoginEmail()" required >
+                        <input type="email" class="input-field " placeholder="Enter Email" id="login-email" onblur="validateLoginEmail()" required >
                             <span id="login-email-error" class="data"></span>
                     </div>
                     
@@ -55,35 +55,35 @@
                 </form>
 
 
-                <form id="register" class="input-group register-span">
+                <form id="register-form" class="input-group register-span">
 
                     <div class="input-container">
-                            <input type="text" class="input-field" placeholder="Full Name" id="contact-name" onchange="validateName()" required>
+                            <input type="text" class="input-field" placeholder="Full Name" id="user-name" onchange="validateName()" required>
                             <span id="name-error"></span>
                     </div>
                     
                     <div class="input-container">
-                            <input type="email" class="input-field" placeholder="Email" id="contact-email" onchange="validateEmail()" required>
+                            <input type="email" class="input-field" placeholder="Email" id="user-email" onchange="validateEmail()" required>
                             <span id="email-error"></span>
                     </div>
                     
                     <div class="input-container">
-                            <input type="tel" class="input-field" placeholder="Phone Number" id="contact-phone" onchange="validatePhone()" required>
+                            <input type="tel" class="input-field" placeholder="Phone Number" id="user-phone" onchange="validatePhone()" required>
                             <span id="phone-error"></span>
                     </div>
                     
                     <div class="input-container">
-                            <input type="password" class="input-field" placeholder="Enter Password" id="contact-password" onchange="validatePassword()" minlength="8" required title="Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, one digit, and one special character.">
+                            <input type="password" class="input-field" placeholder="Enter Password" id="user-password" onchange="validatePassword()" minlength="8" required title="Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, one digit, and one special character.">
                             <div class="show-password" >
-                                <input type="checkbox" onclick="togglePassword('contact-password')"> 
+                                <input type="checkbox" onclick="togglePassword('user-password')"> 
                             </div>
                             <span id="password-error"></span>
                     </div>
                     
                     <div class="input-container">
-                            <input type="password" class="input-field" placeholder="Confirm Password" id="contact-confirm-password" onchange="validateRepeatPassword()" minlength="8" required>
+                            <input type="password" class="input-field" placeholder="Confirm Password" id="user-confirm-password" onchange="validateRepeatPassword()" minlength="8" required>
                             <div class="show-password">
-                                <input type="checkbox" onclick="togglePassword('contact-confirm-password')"> 
+                                <input type="checkbox" onclick="togglePassword('user-confirm-password')"> 
                             </div>
                             <span id="confirm-password-error"></span>
                     </div>
@@ -101,5 +101,7 @@
         <script src="common.js"></script>
         <script src="login.js"></script>
         <script src="register.js"></script>
+
+    
     </body>
 </html>

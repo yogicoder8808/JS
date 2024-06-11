@@ -1,7 +1,7 @@
 // Login and Register Page
 
-var loginPage = document.getElementById("login");
-var registerPage = document.getElementById("register");
+var loginPage = document.getElementById("login-form");
+var registerPage = document.getElementById("register-form");
 var btn = document.getElementById("btn");
 
 
@@ -19,34 +19,28 @@ window.onpopstate = function () {
 // Toggle password
 function togglePassword(id) {
     const passwordField = document.getElementById(id);
-    if (passwordField.type === "password") {
-        passwordField.type = "text";
-    } else {
-        passwordField.type = "password";
-    }
+    passwordField.type = (passwordField.type === "password") ? "text" : "password";
 }
 
 // Validation functions
 function validateName() {
-    const name = document.getElementById("contact-name").value;
-    const trimmedName = name.trim();
-    if (trimmedName === '') {
+    const name = document.getElementById("user-name").value.trim();
+    const nameParts = name.split(' ');
+    if (name === '') {
         nameError.innerHTML = 'Please provide your name';
         return false;
     }
-    const nameParts = trimmedName.split(' ');
     if (nameParts.length < 2) {
         nameError.innerHTML = 'Please enter your full name';
         return false;
-    } else {
+    } 
         nameError.innerHTML = '<i class="fa fa-check-circle"></i>';
         return true;
-    }
 }
 
 
 function validateEmail() {
-    const email = document.getElementById("contact-email");
+    const email = document.getElementById("user-email");
     if (email.value === '') {
         emailError.innerHTML = 'Please provide your email address';
         return false;
@@ -60,7 +54,7 @@ function validateEmail() {
 }
 
 function validatePhone() {
-    const phone = document.getElementById("contact-phone").value.trim();
+    const phone = document.getElementById("user-phone").value.trim();
     if (phone.length === 0) {
         phoneError.innerHTML = 'Please provide your phone number';
         return false;
@@ -79,7 +73,7 @@ function validatePhone() {
 
 
 function validatePassword() {
-    const password = document.getElementById("contact-password").value;
+    const password = document.getElementById("user-password").value;
     if (password.length == '') {
         passwordError.innerHTML = 'Please provide your password';
         return false;
@@ -91,6 +85,5 @@ function validatePassword() {
         return true;
     }     
 }
-
 
 

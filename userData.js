@@ -35,7 +35,7 @@ function editRow(index) {
 function deleteRow(index) {
     const storedData = JSON.parse(localStorage.getItem('registeredUsers')) || [];
     const user = storedData[index];
-    const confirmation = window.confirm(`Are you sure you want to delete this user data "${user.email}" ?`);
+    const confirmation = window.confirm(`Are you sure you want to delete this user "${user.email}" ?`);
 
     if (confirmation){
         storedData.splice(index, 1);
@@ -52,10 +52,10 @@ function loadUserData() {
         const user = storedData[index];
 
         if (user) {
-            document.getElementById('contact-name').value = user.username;
-            document.getElementById('contact-email').value = user.email;
-            document.getElementById('contact-phone').value = user.phone;
-            document.getElementById('contact-password').value = user.password;
+            document.getElementById('user-name').value = user.username;
+            document.getElementById('user-email').value = user.email;
+            document.getElementById('user-phone').value = user.phone;
+            document.getElementById('user-password').value = user.password;
         } else {
             console.error('User not found for index:', index);
         }
@@ -71,10 +71,10 @@ function saveEditedUser(event) {
     if (index !== null) {
         const storedData = JSON.parse(localStorage.getItem('registeredUsers')) || [];
         const editedUser = {
-            username: document.getElementById('contact-name').value.trim(),
-            email: document.getElementById('contact-email').value,
-            phone: document.getElementById('contact-phone').value.trim(),
-            password: document.getElementById('contact-password').value
+            username: document.getElementById('user-name').value.trim(),
+            email: document.getElementById('user-email').value,
+            phone: document.getElementById('user-phone').value.trim(),
+            password: document.getElementById('user-password').value
         };
 
         if (!validateName(editedUser.username)) {
@@ -100,19 +100,19 @@ function saveEditedUser(event) {
         if ((editedUser.username !== originalUser.username || editedUser.phone !== originalUser.phone) && editedUser.password !== originalUser.password) {
             storedData[index] = editedUser; 
             localStorage.setItem('registeredUsers', JSON.stringify(storedData));
-            alert("User data & Password changed. Logging out...");
+            alert("User information and password have been updated. For security reasons, you will now be logged out.");
             localStorage.removeItem('loggedInUser');
             window.location.href = "form.html";
         } else if (editedUser.password !== originalUser.password) {
             storedData[index].password = editedUser.password; 
             localStorage.setItem('registeredUsers', JSON.stringify(storedData));
-            alert("Password changed. Logging out...");
+            alert("Password has been updated. For security reasons, you will now be logged out.");
             localStorage.removeItem('loggedInUser');
             window.location.href = "form.html";
         } else if (editedUser.username !== originalUser.username || editedUser.phone !== originalUser.phone) {
             storedData[index] = editedUser; 
             localStorage.setItem('registeredUsers', JSON.stringify(storedData)); 
-            alert("User data edited & saved successfully!");
+            alert("User data has been successfully updated and saved.");
             localStorage.removeItem('editIndex');
             window.location.href = "userData.html";
         } else {
@@ -147,18 +147,18 @@ function goBack() {
 function addUser(event) {
     event.preventDefault();
 
-    const name = document.getElementById("contact-name").value.trim();
-    const email = document.getElementById("contact-email").value;
-    const phone = document.getElementById("contact-phone").value;
-    const password = document.getElementById("contact-password").value;
+    const name = document.getElementById("user-name").value.trim();
+    const email = document.getElementById("user-email").value;
+    const phone = document.getElementById("user-phone").value;
+    const password = document.getElementById("user-password").value;
 
     // Validate inputs
-    const nameValid = validateName(name);
-    const emailValid = validateEmail(email);
-    const phoneValid = validatePhone(phone);
-    const passwordValid = validatePassword(password);
+    const isValidName = validateName(name);
+    const isValidEmail = validateEmail(email);
+    const isValidPhone = validatePhone(phone);
+    const isValidPassword = validatePassword(password);
 
-    if (nameValid && emailValid && phoneValid && passwordValid) {
+    if (isValidName && isValidEmail && isValidPhone && isValidPassword) {
         const storedData = JSON.parse(localStorage.getItem('registeredUsers')) || [];
         const isDuplicate = storedData.some(user => {
             return user.email === email;

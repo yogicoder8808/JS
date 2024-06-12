@@ -151,7 +151,7 @@ h5{
 .box-three, .box-four{
     position: absolute;
     margin-top: -45px;
-    margin-left: 415px;
+    margin-left: 430px;
 }
 
 .forget-btn{
@@ -225,11 +225,30 @@ h6{
 }
 
 
-.fa-check-circle{
+.fa-check-circle {
     color: seagreen;
-    margin-top: -30px;
-    margin-left: 270px;
+    position: relative; 
+    top: -30px;
+    margin-left: 285px;
 }
+
+.edit-user-page .fa-check-circle, .add-user-page .fa-check-circle{
+    color: seagreen;
+    position: relative; 
+    top: -30px;
+    margin-left: 410px;
+}
+
+.fa-info-circle {
+    color: red; 
+    margin-right: 5px; 
+    cursor: pointer; 
+}
+
+.fa-info-circle:hover {
+    color: darkred; 
+}
+
 
 
 /* Password toggle btn*/

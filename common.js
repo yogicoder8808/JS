@@ -1,93 +1,9 @@
-// // Login and Register Page
+//common.js
 
-// var loginPage = document.getElementById("login-form");
-// var registerPage = document.getElementById("register-form");
-// var btn = document.getElementById("btn");
+function showPasswordRequirements() {
+    alert("Your password must be:\n- At least 8 characters long\n- Contain at least one uppercase and one lowercase letter\n- Contain at least one number\n- Contain at least one special character");
+}
 
-
-// // Prevent Browser Navigation
-// function preventBack() {
-//     window.history.forward();
-// }
-
-// setTimeout(preventBack,0);
-// window.onpopstate = function () {
-//     null
-// };
-
-
-// // Toggle password
-// function togglePassword(id) {
-//     const passwordField = document.getElementById(id);
-//     passwordField.type = (passwordField.type === "password") ? "text" : "password";
-// }
-
-// // Validation functions
-// function validateName() {
-//     const name = document.getElementById("user-name").value.trim();
-//     const nameParts = name.split(' ');
-//     if (name === '') {
-//         nameError.innerHTML = 'Please provide your name';
-//         return false;
-//     }
-//     if (nameParts.length < 2) {
-//         nameError.innerHTML = 'Please enter your full name';
-//         return false;
-//     } 
-//         nameError.innerHTML = '<i class="fa fa-check-circle"></i>';
-//         return true;
-// }
-
-
-// function validateEmail() {
-//     const email = document.getElementById("user-email");
-//     if (email.value === '') {
-//         emailError.innerHTML = 'Please provide your email address';
-//         return false;
-//     } else if (!email.checkValidity()) {
-//         emailError.innerHTML = 'Please enter a valid email address';
-//         return false;
-//     } else {
-//         emailError.innerHTML = '<i class="fa fa-check-circle"></i>';
-//         return true;
-//     }
-// }
-
-// function validatePhone() {
-//     const phone = document.getElementById("user-phone").value.trim();
-//     if (phone.length === 0) {
-//         phoneError.innerHTML = 'Please provide your phone number';
-//         return false;
-//     }
-//     if (isNaN(phone)) {
-//         phoneError.innerHTML = 'Please enter only digits for the phone number';
-//         return false;
-//     }
-//     if (phone.length !== 10) {
-//         phoneError.innerHTML = 'Please enter a 10-digit phone number';
-//         return false;
-//     }
-//     phoneError.innerHTML = '<i class="fa fa-check-circle"></i>';
-//     return true;
-// }
-
-
-// function validatePassword() {
-//     const password = document.getElementById("user-password").value;
-//     if (password.length == '') {
-//         passwordError.innerHTML = 'Please provide your password';
-//         return false;
-//     }else if (!/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/.test(password)) {
-//         passwordError.innerHTML = 'Please enter a valid password';
-//         return false;
-//     }else{
-//         passwordError.innerHTML = '<i class="fa fa-check-circle"></i>';
-//         return true;
-//     }     
-// }
-
-
-// common.js
 
 class CommonFunctions {
     constructor() {}
@@ -111,8 +27,10 @@ class CommonFunctions {
     }
 
     // Validation functions
-    static validateName(name, nameError) {
-        const nameParts = name.trim().split(" ");
+    static validateName(nameInput) {
+        const name = nameInput.value.trim();
+        const nameError = document.getElementById('name-error');
+        const nameParts = name.split(" ");
         if (name === "") {
             nameError.innerHTML = "Please provide your name";
             return false;
@@ -125,11 +43,13 @@ class CommonFunctions {
         return true;
     }
 
-    static validateEmail(email, emailError) {
+    static validateEmail(emailInput) {
+        const email = emailInput.value.trim();
+        const emailError = document.getElementById('email-error');
         if (email === "") {
             emailError.innerHTML = "Please provide your email address";
             return false;
-        } else if (!email.checkValidity()) {
+        } else if (!emailInput.checkValidity()) {
             emailError.innerHTML = "Please enter a valid email address";
             return false;
         } else {
@@ -138,17 +58,18 @@ class CommonFunctions {
         }
     }
 
-    static validatePhone(phone, phoneError) {
-        const trimmedPhone = phone.trim();
-        if (trimmedPhone.length === 0) {
+    static validatePhone(phoneInput) {
+        const phone = phoneInput.value.trim();
+        const phoneError = document.getElementById('phone-error');
+        if (phone.length === 0) {
             phoneError.innerHTML = "Please provide your phone number";
             return false;
         }
-        if (isNaN(trimmedPhone)) {
+        if (isNaN(phone)) {
             phoneError.innerHTML = "Please enter only digits for the phone number";
             return false;
         }
-        if (trimmedPhone.length !== 10) {
+        if (phone.length !== 10) {
             phoneError.innerHTML = "Please enter a 10-digit phone number";
             return false;
         }
@@ -156,7 +77,9 @@ class CommonFunctions {
         return true;
     }
 
-    static validatePassword(password, passwordError) {
+    static validatePassword(passwordInput) {
+        const password = passwordInput.value.trim();
+        const passwordError = document.getElementById('password-error');
         if (password.length === 0) {
             passwordError.innerHTML = "Please provide your password";
             return false;
@@ -165,10 +88,26 @@ class CommonFunctions {
                 password
             )
         ) {
-            passwordError.innerHTML = "Please enter a valid password";
+            passwordError.innerHTML = `<i class="fa fa-info-circle" onclick="showPasswordRequirements()"></i>`;
             return false;
         } else {
             passwordError.innerHTML = '<i class="fa fa-check-circle"></i>';
+            return true;
+        }
+    }
+
+    static validateConfirmPassword(confirmPasswordInput) {
+        const password = document.getElementById('user-password').value.trim();
+        const confirmPassword = confirmPasswordInput.value.trim();
+        const confirmPasswordError = document.getElementById('confirm-password-error');
+        if (confirmPassword === "") {
+            confirmPasswordError.innerHTML = "Please confirm your password";
+            return false;
+        } else if (confirmPassword !== password) {
+            confirmPasswordError.innerHTML = "Passwords do not match";
+            return false;
+        } else {
+            confirmPasswordError.innerHTML = '<i class="fa fa-check-circle"></i>';
             return true;
         }
     }
@@ -176,4 +115,5 @@ class CommonFunctions {
 
 CommonFunctions.init();
 
-export default CommonFunctions;
+
+

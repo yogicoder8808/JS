@@ -1,12 +1,11 @@
 //common.js
 
-function showPasswordRequirements() {
-    alert("Your password must be:\n- At least 8 characters long\n- Contain at least one uppercase and one lowercase letter\n- Contain at least one number\n- Contain at least one special character");
-}
-
-
 class CommonFunctions {
     constructor() {}
+
+    static showPasswordRequirements() {
+        alert("Your password must be:\n- At least 8 characters long\n- Contain at least one uppercase and one lowercase letter\n- Contain at least one number\n- Contain at least one special character");
+    }
 
     // Prevent Browser Navigation
     static preventBack() {
@@ -25,7 +24,7 @@ class CommonFunctions {
         const passwordField = document.getElementById(id);
         passwordField.type = passwordField.type === "password" ? "text" : "password";
     }
-
+    
     // Validation functions
     static validateName(nameInput) {
         const name = nameInput.value.trim();
@@ -84,7 +83,7 @@ class CommonFunctions {
             passwordError.innerHTML = "Please provide your password";
             return false;
         } else if ( !/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/.test(password)) {
-            passwordError.innerHTML = `<i class="fa fa-info-circle" onclick="showPasswordRequirements()"></i>`;
+            passwordError.innerHTML = `<i class="fa fa-info-circle" onclick="CommonFunctions.showPasswordRequirements()"></i>`;
             return false;
         } else {
             passwordError.innerHTML = '<i class="fa fa-check-circle"></i>';
@@ -107,6 +106,7 @@ class CommonFunctions {
             return true;
         }
     }
+    
 }
 
 CommonFunctions.init();

@@ -1,4 +1,5 @@
 //login.js
+
 class LoginPage {
     constructor() {
         this.loginEmailError = document.getElementById("login-email-error");
@@ -8,7 +9,7 @@ class LoginPage {
         this.loginSubmitError = document.getElementById("login-submit-error");
     }
 
-     login() {
+    login() {
         document.getElementById("login-form").style.left = "40px";
         document.getElementById("register-form").style.left = "450px";
         document.getElementById("btn").style.left = "0";
@@ -27,13 +28,13 @@ class LoginPage {
         }
     }
 
-     validateLoginPassword() {
+    validateLoginPassword() {
         if (this.inputPassword.value === '') {
             this.loginPasswordError.innerHTML = 'Please provide your password';
             return false;
         }
         if (!/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/.test(this.inputPassword.value)) {
-            this.loginPasswordError.innerHTML = '<i class="fa fa-info-circle" onclick="showPasswordRequirements()"></i>';
+            this.loginPasswordError.innerHTML = '<i class="fa fa-info-circle" onclick="CommonFunctions.showPasswordRequirements()"></i>';
             return false;
         }
         this.loginPasswordError.innerHTML = '<i class="fa fa-check-circle"></i>';

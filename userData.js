@@ -1,5 +1,31 @@
+//userData.js
+
 class UserDataPage {
     constructor() {}
+
+    // Helper function to get user form data and validate inputs
+    static getUserFormData() {
+        const usernameInput = document.getElementById("user-name");
+        const emailInput = document.getElementById("user-email");
+        const phoneInput = document.getElementById("user-phone");
+        const passwordInput = document.getElementById("user-password");
+
+        const userData = {
+            username: usernameInput.value.trim(),
+            email: emailInput.value,
+            phone: phoneInput.value.trim(),
+            password: passwordInput.value
+        };
+
+        const isNameValid = CommonFunctions.validateName(usernameInput);
+        const isEmailValid = CommonFunctions.validateEmail(emailInput);
+        const isPhoneValid = CommonFunctions.validatePhone(phoneInput);
+        const isPasswordValid = CommonFunctions.validatePassword(passwordInput);
+
+        const isValid = isNameValid && isEmailValid && isPhoneValid && isPasswordValid;
+
+        return { userData, isValid };
+    }
 
     static displayStoredData() {
         const storedData = JSON.parse(localStorage.getItem("registeredUsers")) || [];
@@ -65,27 +91,12 @@ class UserDataPage {
         const index = localStorage.getItem("editIndex");
         if (index !== null) {
             const storedData = JSON.parse(localStorage.getItem("registeredUsers")) || [];
-            const editedUser = {
-                username: document.getElementById("user-name").value.trim(),
-                email: document.getElementById("user-email").value,
-                phone: document.getElementById("user-phone").value.trim(),
-                password: document.getElementById("user-password").value,
-            };
+            const { userData: editedUser, isValid } = UserDataPage.getUserFormData();
 
-            const usernameInput = document.getElementById("user-name");
-            const emailInput = document.getElementById("user-email");
-            const phoneInput = document.getElementById("user-phone");
-            const passwordInput = document.getElementById("user-password");
-
-            const isNameValid = CommonFunctions.validateName(usernameInput);
-            const isEmailValid = CommonFunctions.validateEmail(emailInput);
-            const isPhoneValid = CommonFunctions.validatePhone(phoneInput);
-            const isPasswordValid = CommonFunctions.validatePassword(passwordInput);
-
-if (!isNameValid || !isEmailValid || !isPhoneValid || !isPasswordValid) {
-    alert("Invalid input! Please enter valid data.");
-    return;
-}
+            if (!isValid) {
+                alert("Invalid input! Please enter valid data.");
+                return;
+            }
 
             const originalUser = storedData[index];
 
@@ -126,8 +137,6 @@ if (!isNameValid || !isEmailValid || !isPhoneValid || !isPasswordValid) {
         }
     }
 
-
-
     static cancelEdit() {
         localStorage.removeItem("editIndex");
         window.location.href = "userData.html";
@@ -149,32 +158,16 @@ if (!isNameValid || !isEmailValid || !isPhoneValid || !isPasswordValid) {
     static addUser(event) {
         event.preventDefault();
 
-        const name = document.getElementById("user-name").value.trim();
-        const email = document.getElementById("user-email").value;
-        const phone = document.getElementById("user-phone").value;
-        const password = document.getElementById("user-password").value;
+        const { userData, isValid } = UserDataPage.getUserFormData();
 
-        // Validate inputs
-        const isValidName = CommonFunctions.validateName(document.getElementById("user-name"));
-        const isValidEmail = CommonFunctions.validateEmail(document.getElementById("user-email"));
-        const isValidPhone = CommonFunctions.validatePhone(document.getElementById("user-phone"));
-        const isValidPassword = CommonFunctions.validatePassword(document.getElementById("user-password"));
-
-        if (isValidName && isValidEmail && isValidPhone && isValidPassword) {
+        if (isValid) {
             const storedData = JSON.parse(localStorage.getItem('registeredUsers')) || [];
-            const isDuplicate = storedData.some(user => user.email === email);
+            const isDuplicate = storedData.some(user => user.email === userData.email);
 
             if (isDuplicate) {
                 window.alert("Duplicate entry: A user with the same email already exists.");
                 return false;
             }
-
-            const userData = {
-                username: name,
-                email: email,
-                phone: phone,
-                password: password
-            };
 
             storedData.push(userData);
             localStorage.setItem('registeredUsers', JSON.stringify(storedData));

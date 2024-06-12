@@ -1,81 +1,86 @@
-// register.js
+//register.js
 
-function register() {
-    loginPage.style.left = "-410px";
-    registerPage.style.left = "30px";
-    btn.style.left = "110px";
-}
-
-function validateRepeatPassword() {
-    const password = document.getElementById("contact-password").value;
-    const reEnterPwd = document.getElementById("contact-repeat-password").value;
-    if (reEnterPwd.length == '') {
-        rePasswordError.innerHTML = 'Re-Enter Password';
-        return false;
+class RegisterPage {
+    constructor() {
     }
-    if (reEnterPwd != password) {
-        rePasswordError.innerHTML = 'P/w not matching';
-        return false;
+
+    register() {
+        document.getElementById("login-form").style.left = "-410px";
+        document.getElementById("register-form").style.left = "30px";
+        document.getElementById("btn").style.left = "110px";
     }
-    rePasswordError.innerHTML = '<i class="fa fa-check-circle"></i>';
-    return true;
-}
 
-// Registration form validation
-const nameError = document.getElementById("name-error");
-const emailError = document.getElementById("email-error");
-const phoneError = document.getElementById("phone-error");
-const passwordError = document.getElementById("password-error");
-const rePasswordError = document.getElementById("repeat-pwd-error");
-const submitError = document.getElementById("submit-error");
-const checkboxError = document.getElementById("checkbox-error");
+    // Helper function to get form data and validate inputs
+    static getFormData() {
+        const checkbox = document.getElementById("checkbox-term");
+        const nameInput = document.getElementById("user-name");
+        const emailInput = document.getElementById("user-email");
+        const phoneInput = document.getElementById("user-phone");
+        const passwordInput = document.getElementById("user-password");
+        const confirmPasswordInput = document.getElementById("user-confirm-password");
 
-function registerForm() {
-    
-    const checkbox = document.getElementById("checkbox-term");
-    const name = document.getElementById("contact-name").value;
-    const email = document.getElementById("contact-email").value;
-    const phone = document.getElementById("contact-phone").value;
-    const password = document.getElementById("contact-password").value;
+        const isValidName = CommonFunctions.validateName(nameInput);
+        const isValidEmail = CommonFunctions.validateEmail(emailInput);
+        const isValidPhone = CommonFunctions.validatePhone(phoneInput);
+        const isValidPassword = CommonFunctions.validatePassword(passwordInput);
+        const isValidConfirmPassword = CommonFunctions.validateConfirmPassword(confirmPasswordInput);
 
-    if (!validateName() || !validateEmail() || !validatePhone() || !validatePassword() || !validateRepeatPassword()) {
-        submitError.style.display = 'block';
-        submitError.innerHTML = 'Please fix error to submit';
-        setTimeout(() => {
-            submitError.style.display = 'none';
-        }, 3000);
-        return false;
-    } else if (!checkbox.checked) {
-        submitError.style.display = 'block';
-        submitError.innerHTML = 'Please agree';
-        setTimeout(() => {
-            submitError.style.display = 'none';
-        }, 3000);
-        return false;
-    } else {
-        const storedData = JSON.parse(localStorage.getItem('registeredUsers')) || [];
-        const isDuplicate = storedData.some(user => {
-            return user.email === email;
-        });
-        if (isDuplicate) {
-            window.alert("Duplicate entry: A user with the same email already exists.");
-            return false;
-        }
+        const isValid = isValidName && isValidEmail && isValidPhone && isValidPassword && isValidConfirmPassword;
+
         const userData = {
-            username: name,
-            email: email,
-            phone: phone,
-            password: password
+            username: nameInput.value.trim(),
+            email: emailInput.value,
+            phone: phoneInput.value.trim(),
+            password: passwordInput.value
         };
 
-        storedData.push(userData);
-        localStorage.setItem('registeredUsers', JSON.stringify(storedData));
-        window.alert("User Registered Successfully");
-        window.location.href = "form.html";
-        displayStoredData();
-        return true;
+        return { userData, isValid, checkbox };
+    }
+
+    // Method to handle form submission
+    registerForm(event) {
+        event.preventDefault();
+
+        const submitError = document.getElementById("submit-error");
+        const { userData, isValid, checkbox } = RegisterPage.getFormData();
+
+        if (!isValid) {
+            submitError.style.display = "block";
+            submitError.innerHTML = "Please correct the errors to submit the form.";
+            setTimeout(() => {
+                submitError.style.display = "none";
+            }, 3000);
+            return false;
+        } else if (!checkbox.checked) {
+            submitError.style.display = "block";
+            submitError.innerHTML = "Please accept the terms and conditions to submit the form.";
+            setTimeout(() => {
+                submitError.style.display = "none";
+            }, 3000);
+            return false;
+        } else {
+            const storedData = JSON.parse(localStorage.getItem("registeredUsers")) || [];
+            const isDuplicate = storedData.some((user) => user.email === userData.email);
+
+            if (isDuplicate) {
+                window.alert("Duplicate entry: A user with the same email already exists.");
+                return false;
+            }
+
+            storedData.push(userData);
+            localStorage.setItem("registeredUsers", JSON.stringify(storedData));
+            window.alert("User Registered Successfully");
+            window.location.href = "form.html";
+            return true;
+        }
     }
 }
+
+// Initialize the RegisterPage instance
+const registerPageInstance = new RegisterPage();
+
+
+
 
 
 

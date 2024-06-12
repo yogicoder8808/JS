@@ -77,7 +77,7 @@ h5{
     
 }
 
-.input-grp{
+.input-group{
     top: 10px;
     position: relative;
     width: 280px;
@@ -91,14 +91,14 @@ h5{
 }
 
 
-.input-grp span{
+.input-group span{
     top: 43.5%;
     color: #777;
     font-size: 12px;
     position: absolute;
 }
 
-.span span{
+.register-span span{
     top: 77%;
     color: #777;
     font-size: 12px;
@@ -151,7 +151,7 @@ h5{
 .box-three, .box-four{
     position: absolute;
     margin-top: -45px;
-    margin-left: 415px;
+    margin-left: 430px;
 }
 
 .forget-btn{
@@ -179,7 +179,7 @@ h6{
     display: inline-flex;
 }
 
-.reg-btn{
+.register-btn{
     position: absolute;
     font-size: 12px;
     margin-top: 10px;
@@ -191,16 +191,16 @@ h6{
     color: rgb(28, 28, 234);;
 }
 
-.reg-btn:hover{
+.register-btn:hover{
     color: black;
 }
 
-#login{
+#login-form{
     left: 20px;
    
 }
 
-#register{
+#register-form{
     left: 450px;
     top: -50%;
 }
@@ -225,11 +225,30 @@ h6{
 }
 
 
-.fa-check-circle{
+.fa-check-circle {
     color: seagreen;
-    margin-top: -30px;
-    margin-left: 270px;
+    position: relative; 
+    top: -30px;
+    margin-left: 285px;
 }
+
+.edit-user-page .fa-check-circle, .add-user-page .fa-check-circle{
+    color: seagreen;
+    position: relative; 
+    top: -30px;
+    margin-left: 410px;
+}
+
+.fa-info-circle {
+    color: red; 
+    margin-right: 5px; 
+    cursor: pointer; 
+}
+
+.fa-info-circle:hover {
+    color: darkred; 
+}
+
 
 
 /* Password toggle btn*/
@@ -275,7 +294,7 @@ th {
 
 /* AddUser and Logout btn */
 
-.adduser-btn{
+.add-user-btn{
     padding-top: 5px;
     padding-bottom: 5px;
     padding-left: 15px;
@@ -298,7 +317,7 @@ th {
     font-weight: 600;
 }
 
-.adduser-btn:hover{
+.add-user-btn:hover{
     background-color: rgb(40, 202, 40);  
     color: white;
 }
@@ -315,7 +334,7 @@ th {
     margin: 40px auto;
 
 }
-.contact-input {
+.user-input {
     width: 100%;
     margin-bottom: 20px;
     padding: 8px;
@@ -325,7 +344,7 @@ th {
     cursor: pointer;
 }
 
-.contact-input:hover {
+.user-input:hover {
     background-color: #f5f5f5;
 }
 
@@ -346,7 +365,7 @@ label {
     border: 1px solid #2980b9;
 }
 
-.cancel-btn,.goBack-btn{
+.cancel-btn,.back-btn{
     padding: 5px;
     background-color: #e74c3c; 
     color: #fff;
@@ -357,7 +376,7 @@ label {
     background-color:blue;
 }
     
-.cancel-btn:hover, .goBack-btn:hover{
+.cancel-btn:hover, .back-btn:hover{
     background-color: red;  
 }
 
@@ -372,7 +391,7 @@ label {
     white-space: nowrap;
     opacity: 0.7;
 }
-.pwd-error-msg{
+.password-error-msg{
     font-size: 12px;
     color: red;
     position: absolute;

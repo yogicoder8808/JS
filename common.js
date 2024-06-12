@@ -1,94 +1,115 @@
-// Login and Register Page
+//common.js
 
-var loginPage = document.getElementById("login");
-var registerPage = document.getElementById("register");
-var btn = document.getElementById("btn");
+class CommonFunctions {
+    constructor() {}
 
-
-// Prevent Browser Navigation
-function preventBack() {
-    window.history.forward();
-}
-
-setTimeout(preventBack,0);
-window.onpopstate = function () {
-    null
-};
-
-
-// Toggle password
-function togglePassword(id) {
-    const passwordField = document.getElementById(id);
-    if (passwordField.type === "password") {
-        passwordField.type = "text";
-    } else {
-        passwordField.type = "password";
+    static showPasswordRequirements() {
+        alert("Your password must be:\n- At least 8 characters long\n- Contain at least one uppercase and one lowercase letter\n- Contain at least one number\n- Contain at least one special character");
     }
-}
 
-// Validation functions
-function validateName() {
-    const name = document.getElementById("contact-name").value;
-    const trimmedName = name.trim();
-    if (trimmedName !== name) {
-        nameError.innerHTML = 'Trailing spaces not allowed';
-        return false;
+    // Prevent Browser Navigation
+    static preventBack() {
+        window.history.forward();
     }
-    const nameParts = name.split(' ');
-    if (nameParts.length !== 2) {
-        nameError.innerHTML = 'Enter Full name';
-        return false;
-    } else {
+
+    static init() {
+        setTimeout(CommonFunctions.preventBack, 0);
+        window.onpopstate = function() {
+            null;
+        };
+    }
+
+    // Toggle password
+    static togglePassword(id) {
+        const passwordField = document.getElementById(id);
+        passwordField.type = passwordField.type === "password" ? "text" : "password";
+    }
+    
+    // Validation functions
+    static validateName(nameInput) {
+        const name = nameInput.value.trim();
+        const nameError = document.getElementById('name-error');
+        const nameParts = name.split(" ");
+        if (name === "") {
+            nameError.innerHTML = "Please provide your name";
+            return false;
+        }
+        if (nameParts.length < 2) {
+            nameError.innerHTML = "Please enter your full name";
+            return false;
+        }
         nameError.innerHTML = '<i class="fa fa-check-circle"></i>';
         return true;
     }
-}
 
-function validateEmail() {
-    const email = document.getElementById("contact-email");
-    if (email.value === '') {
-        emailError.innerHTML = 'Email is required';
-        return false;
-    } else if (!email.checkValidity()) {
-        emailError.innerHTML = 'Invalid Email';
-        return false;
-    } else {
-        emailError.innerHTML = '<i class="fa fa-check-circle"></i>';
+    static validateEmail(emailInput) {
+        const email = emailInput.value.trim();
+        const emailError = document.getElementById('email-error');
+        if (email === "") {
+            emailError.innerHTML = "Please provide your email address";
+            return false;
+        } else if (!emailInput.checkValidity()) {
+            emailError.innerHTML = "Please enter a valid email address";
+            return false;
+        } else {
+            emailError.innerHTML = '<i class="fa fa-check-circle"></i>';
+            return true;
+        }
+    }
+
+    static validatePhone(phoneInput) {
+        const phone = phoneInput.value.trim();
+        const phoneError = document.getElementById('phone-error');
+        if (phone.length === 0) {
+            phoneError.innerHTML = "Please provide your phone number";
+            return false;
+        }
+        if (isNaN(phone)) {
+            phoneError.innerHTML = "Please enter only digits for the phone number";
+            return false;
+        }
+        if (phone.length !== 10) {
+            phoneError.innerHTML = "Please enter a 10-digit phone number";
+            return false;
+        }
+        phoneError.innerHTML = '<i class="fa fa-check-circle"></i>';
         return true;
     }
+
+    static validatePassword(passwordInput) {
+        const password = passwordInput.value.trim();
+        const passwordError = document.getElementById('password-error');
+        if (password.length === 0) {
+            passwordError.innerHTML = "Please provide your password";
+            return false;
+        } else if ( !/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/.test(password)) {
+            passwordError.innerHTML = `<i class="fa fa-info-circle" onclick="CommonFunctions.showPasswordRequirements()"></i>`;
+            return false;
+        } else {
+            passwordError.innerHTML = '<i class="fa fa-check-circle"></i>';
+            return true;
+        }
+    }
+
+    static validateConfirmPassword(confirmPasswordInput) {
+        const password = document.getElementById('user-password').value.trim();
+        const confirmPassword = confirmPasswordInput.value.trim();
+        const confirmPasswordError = document.getElementById('confirm-password-error');
+        if (confirmPassword === "") {
+            confirmPasswordError.innerHTML = "Please confirm your password";
+            return false;
+        } else if (confirmPassword !== password) {
+            confirmPasswordError.innerHTML = "Passwords do not match";
+            return false;
+        } else {
+            confirmPasswordError.innerHTML = '<i class="fa fa-check-circle"></i>';
+            return true;
+        }
+    }
+    
 }
 
-function validatePhone() {
-    const phone = document.getElementById("contact-phone").value.trim();
-    if (phone.length === 0) {
-        phoneError.innerHTML = 'Enter phone number';
-        return false;
-    }
-    if (isNaN(phone)) {
-        phoneError.innerHTML = 'only digits';
-        return false;
-    }
-    if (phone.length !== 10) {
-        phoneError.innerHTML = '10 digits required';
-        return false;
-    }
-    phoneError.innerHTML = '<i class="fa fa-check-circle"></i>';
-    return true;
-}
+CommonFunctions.init();
 
-
-function validatePassword() {
-    const password = document.getElementById("contact-password").value;
-    if (password.length == '') {
-        passwordError.innerHTML = 'Enter Password';
-        return false;
-    } else if (!/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/.test(password)) {
-        passwordError.innerHTML = 'Invalid password';
-        return false;
-    } else {
-        passwordError.innerHTML = '<i class="fa fa-check-circle"></i>';
-        return true;
-    }
-}
 
 

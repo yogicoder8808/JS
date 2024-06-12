@@ -72,33 +72,61 @@ class UserDataPage {
                 password: document.getElementById("user-password").value,
             };
 
-            if (!CommonFunctions.validateName(document.getElementById("user-name")) ||
-                !CommonFunctions.validateEmail(document.getElementById("user-email")) ||
-                !CommonFunctions.validatePhone(document.getElementById("user-phone")) ||
-                !CommonFunctions.validatePassword(document.getElementById("user-password"))) {
-                alert("Invalid input! Please enter valid data.");
-                return;
-            }
+            const usernameInput = document.getElementById("user-name");
+            const emailInput = document.getElementById("user-email");
+            const phoneInput = document.getElementById("user-phone");
+            const passwordInput = document.getElementById("user-password");
+
+            const isNameValid = CommonFunctions.validateName(usernameInput);
+            const isEmailValid = CommonFunctions.validateEmail(emailInput);
+            const isPhoneValid = CommonFunctions.validatePhone(phoneInput);
+            const isPasswordValid = CommonFunctions.validatePassword(passwordInput);
+
+if (!isNameValid || !isEmailValid || !isPhoneValid || !isPasswordValid) {
+    alert("Invalid input! Please enter valid data.");
+    return;
+}
 
             const originalUser = storedData[index];
 
-            if (editedUser.password !== originalUser.password) {
+            if (
+                (editedUser.username !== originalUser.username || editedUser.phone !== originalUser.phone) &&
+                editedUser.password !== originalUser.password
+            ) {
+                storedData[index] = editedUser;
+                localStorage.setItem("registeredUsers", JSON.stringify(storedData));
+                alert(
+                    "User information and password have been updated. For security reasons, you will now be logged out."
+                );
+                localStorage.removeItem("loggedInUser");
+                window.location.href = "form.html";
+            } else if (editedUser.password !== originalUser.password) {
+                storedData[index].password = editedUser.password;
+                localStorage.setItem("registeredUsers", JSON.stringify(storedData));
                 alert(
                     "Password has been updated. For security reasons, you will now be logged out."
                 );
                 localStorage.removeItem("loggedInUser");
                 window.location.href = "form.html";
-            } else {
+            } else if (
+                editedUser.username !== originalUser.username ||
+                editedUser.phone !== originalUser.phone
+            ) {
                 storedData[index] = editedUser;
                 localStorage.setItem("registeredUsers", JSON.stringify(storedData));
                 alert("User data has been successfully updated and saved.");
                 localStorage.removeItem("editIndex");
                 window.location.href = "userData.html";
+            } else {
+                alert("No changes detected.");
+                return;
             }
         } else {
             console.error("No edit index found in localStorage");
         }
     }
+
+
 
     static cancelEdit() {
         localStorage.removeItem("editIndex");

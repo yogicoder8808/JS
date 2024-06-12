@@ -83,11 +83,7 @@ class CommonFunctions {
         if (password.length === 0) {
             passwordError.innerHTML = "Please provide your password";
             return false;
-        } else if (
-            !/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/.test(
-                password
-            )
-        ) {
+        } else if ( !/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/.test(password)) {
             passwordError.innerHTML = `<i class="fa fa-info-circle" onclick="showPasswordRequirements()"></i>`;
             return false;
         } else {

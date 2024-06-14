@@ -4,7 +4,8 @@ class CommonFunctions {
     constructor() {}
 
     static showPasswordRequirements() {
-        alert("Your password must be:\n- At least 8 characters long\n- Contain at least one uppercase and one lowercase letter\n- Contain at least one number\n- Contain at least one special character");
+        alert("Your password must be:\n- At least 8 characters long\n- Contain at least one uppercase and one lowercase letter\n- Contain at least one number\n- Contain at least one special character\n- Should not contain any spaces");
+
     }
 
     // Prevent Browser Navigation
@@ -99,12 +100,35 @@ class CommonFunctions {
             confirmPasswordError.innerHTML = "Please confirm your password";
             return false;
         } else if (confirmPassword !== password) {
-            confirmPasswordError.innerHTML = "Passwords do not match";
+            confirmPasswordError.innerHTML = "Confirm password does not match the original password";
             return false;
         } else {
             confirmPasswordError.innerHTML = '<i class="fa fa-check-circle"></i>';
             return true;
         }
+    }
+
+    static getUserFormData() {
+        const usernameInput = document.getElementById("user-name");
+        const emailInput = document.getElementById("user-email");
+        const phoneInput = document.getElementById("user-phone");
+        const passwordInput = document.getElementById("user-password");
+
+        const userData = {
+            username: usernameInput.value.trim(),
+            email: emailInput.value,
+            phone: phoneInput.value.trim(),
+            password: passwordInput.value.trim(),
+        };
+
+        const isNameValid = CommonFunctions.validateName(usernameInput);
+        const isEmailValid = CommonFunctions.validateEmail(emailInput);
+        const isPhoneValid = CommonFunctions.validatePhone(phoneInput);
+        const isPasswordValid = CommonFunctions.validatePassword(passwordInput);
+
+        const isValid = isNameValid && isEmailValid && isPhoneValid && isPasswordValid;
+
+        return { userData, isValid };
     }
     
 }

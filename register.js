@@ -10,39 +10,13 @@ class RegisterPage {
         document.getElementById("btn").style.left = "110px";
     }
 
-    // Helper function to get form data and validate inputs
-    static getFormData() {
-        const checkbox = document.getElementById("checkbox-term");
-        const nameInput = document.getElementById("user-name");
-        const emailInput = document.getElementById("user-email");
-        const phoneInput = document.getElementById("user-phone");
-        const passwordInput = document.getElementById("user-password");
-        const confirmPasswordInput = document.getElementById("user-confirm-password");
-
-        const isValidName = CommonFunctions.validateName(nameInput);
-        const isValidEmail = CommonFunctions.validateEmail(emailInput);
-        const isValidPhone = CommonFunctions.validatePhone(phoneInput);
-        const isValidPassword = CommonFunctions.validatePassword(passwordInput);
-        const isValidConfirmPassword = CommonFunctions.validateConfirmPassword(confirmPasswordInput);
-
-        const isValid = isValidName && isValidEmail && isValidPhone && isValidPassword && isValidConfirmPassword;
-
-        const userData = {
-            username: nameInput.value.trim(),
-            email: emailInput.value,
-            phone: phoneInput.value.trim(),
-            password: passwordInput.value
-        };
-
-        return { userData, isValid, checkbox };
-    }
-
     // Method to handle form submission
     registerForm(event) {
         event.preventDefault();
 
         const submitError = document.getElementById("submit-error");
-        const { userData, isValid, checkbox } = RegisterPage.getFormData();
+        const { userData, isValid } = CommonFunctions.getUserFormData();
+        const checkbox = document.getElementById("checkbox-term");
 
         if (!isValid) {
             submitError.style.display = "block";

@@ -3,29 +3,6 @@
 class UserDataPage {
     constructor() {}
 
-    // Helper function to get user form data and validate inputs
-    static getUserFormData() {
-        const usernameInput = document.getElementById("user-name");
-        const emailInput = document.getElementById("user-email");
-        const phoneInput = document.getElementById("user-phone");
-        const passwordInput = document.getElementById("user-password");
-
-        const userData = {
-            username: usernameInput.value.trim(),
-            email: emailInput.value,
-            phone: phoneInput.value.trim(),
-            password: passwordInput.value
-        };
-
-        const isNameValid = CommonFunctions.validateName(usernameInput);
-        const isEmailValid = CommonFunctions.validateEmail(emailInput);
-        const isPhoneValid = CommonFunctions.validatePhone(phoneInput);
-        const isPasswordValid = CommonFunctions.validatePassword(passwordInput);
-
-        const isValid = isNameValid && isEmailValid && isPhoneValid && isPasswordValid;
-
-        return { userData, isValid };
-    }
 
     static displayStoredData() {
         const storedData = JSON.parse(localStorage.getItem("registeredUsers")) || [];
@@ -91,7 +68,7 @@ class UserDataPage {
         const index = localStorage.getItem("editIndex");
         if (index !== null) {
             const storedData = JSON.parse(localStorage.getItem("registeredUsers")) || [];
-            const { userData: editedUser, isValid } = UserDataPage.getUserFormData();
+            const { userData: editedUser, isValid } = CommonFunctions.getUserFormData();
 
             if (!isValid) {
                 alert("Invalid input! Please enter valid data.");
@@ -158,7 +135,7 @@ class UserDataPage {
     static addUser(event) {
         event.preventDefault();
 
-        const { userData, isValid } = UserDataPage.getUserFormData();
+        const { userData, isValid } = CommonFunctions.getUserFormData();
 
         if (isValid) {
             const storedData = JSON.parse(localStorage.getItem('registeredUsers')) || [];
@@ -180,7 +157,4 @@ class UserDataPage {
     }
 }
 
-// Ensure the stored data is displayed when the page is loaded
-document.addEventListener('DOMContentLoaded', () => {
-    UserDataPage.displayStoredData();
-});
+UserDataPage.displayStoredData();
